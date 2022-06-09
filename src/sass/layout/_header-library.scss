@@ -20,14 +20,10 @@
 .navigation-wrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 54px;
+  margin-bottom: 62px;
 
   @include screen-size(tablet) {
     margin-bottom: 40px;
-  }
-
-  @include screen-size(desktop) {
-    margin-bottom: 41px;
   }
 }
 
@@ -90,9 +86,25 @@
 }
 
 .lib-btns {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
 }
 
 .btn {
+  display: inline-block;
   min-width: 130px;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+
+.btn--active {
+  background-color: $color-accent;
+}
+
+.btn__lib:not(:last-child) {
+  margin-right: 15px;
 }
