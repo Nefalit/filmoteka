@@ -1,9 +1,10 @@
-.header-home {
+.header-lib {
   padding: 40px 0 62px;
   background-image: url('../images/library/mobile/lib-header-mobile.jpg'),
     linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 50% 70%;
 
   @include screen-size(tablet) {
     background-image: url('../images/library/tablet/lib-header-tablet.jpg'),
@@ -27,8 +28,14 @@
   }
 }
 
-.header-home__logo {
+.header__link {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
   stroke: $color-logo;
+  fill: transparent;
 }
 
 .header-home__title {
@@ -99,10 +106,16 @@
   border-radius: 5px;
   text-transform: uppercase;
   background-color: transparent;
+  color: $color-main-white;
 }
 
 .btn--active {
+  border-color: transparent;
   background-color: $color-accent;
+}
+
+.btn--bright {
+  border: 1px solid $color-main-white;
 }
 
 .btn__lib:not(:last-child) {

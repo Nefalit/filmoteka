@@ -30,8 +30,14 @@
   }
 }
 
-.header-home__logo {
+.header__link {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
   stroke: $color-logo;
+  fill: transparent;
 }
 
 .header-home__title {
