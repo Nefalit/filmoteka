@@ -1,0 +1,143 @@
+.header-home {
+  padding: 40px 0 44px;
+  background-image: url('../images/home/mobile/header-bg-mobile.jpg'),
+    linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include screen-size(tablet) {
+    background-image: url('../images/home/tablet/header-bg-tablet.jpg'),
+      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  }
+
+  @include screen-size(desktop) {
+    background-image: url('../images/home/desktop/header-bg-desktop.jpg'),
+      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  }
+}
+
+.navigation-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 54px;
+
+  @include screen-size(tablet) {
+    margin-bottom: 40px;
+  }
+
+  @include screen-size(desktop) {
+    margin-bottom: 41px;
+  }
+}
+
+.header-home__logo {
+  stroke: $color-logo;
+}
+
+.header-home__title {
+  display: none;
+  color: $color-main-white;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  margin-left: 8px;
+
+  @include screen-size(tablet) {
+    display: inline-block;
+  }
+
+  @include screen-size(tablet) {
+    margin-left: 10px;
+  }
+}
+
+.nav {
+  margin-left: auto;
+}
+.nav-list {
+  display: flex;
+}
+
+.nav__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 39px;
+
+  @include screen-size(tablet-only) {
+    margin-right: 40px;
+  }
+}
+
+.nav__item.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: $color-accent;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__link {
+  text-transform: uppercase;
+  color: $color-main-white;
+}
+
+.search__form {
+  position: relative;
+  margin: 0 auto 16px;
+
+  @include screen-size(tablet) {
+    margin: 0 auto 20px;
+    max-width: 336px;
+  }
+}
+
+.search__input {
+  display: block;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $color-main-white;
+  background-color: transparent;
+  color: $color-main-white;
+}
+
+.search__input::placeholder {
+  color: $color-main-white;
+}
+
+.search__btn {
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: transparent;
+}
+
+.search__warn {
+  display: block;
+  max-width: 280px;
+  font-family: $primary-font;
+  font-size: 14px;
+  font-weight: 400;
+  color: $color-warn-text;
+
+  @include screen-size(tablet) {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+}
+
+.search__warn.is-hidden {
+  display: none;
+}

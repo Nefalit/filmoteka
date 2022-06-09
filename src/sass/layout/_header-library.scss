@@ -1,0 +1,110 @@
+.header-home {
+  padding: 40px 0 62px;
+  background-image: url('../images/library/mobile/lib-header-mobile.jpg'),
+    linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include screen-size(tablet) {
+    background-image: url('../images/library/tablet/lib-header-tablet.jpg'),
+      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+    padding: 40px 0 60px;
+  }
+
+  @include screen-size(desktop) {
+    background-image: url('../images/library/desktop/lib-header-desktop.jpg'),
+      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  }
+}
+
+.navigation-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 62px;
+
+  @include screen-size(tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.header-home__logo {
+  stroke: $color-logo;
+}
+
+.header-home__title {
+  display: none;
+  color: $color-main-white;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  margin-left: 8px;
+
+  @include screen-size(tablet) {
+    display: inline-block;
+  }
+
+  @include screen-size(tablet) {
+    margin-left: 10px;
+  }
+}
+
+.nav {
+  margin-left: auto;
+}
+.nav-list {
+  display: flex;
+}
+
+.nav__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 39px;
+
+  @include screen-size(tablet-only) {
+    margin-right: 40px;
+  }
+}
+
+.nav__item.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: $color-accent;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__link {
+  text-transform: uppercase;
+  color: $color-main-white;
+}
+
+.lib-btns {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 130px;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+
+.btn--active {
+  background-color: $color-accent;
+}
+
+.btn__lib:not(:last-child) {
+  margin-right: 15px;
+}
