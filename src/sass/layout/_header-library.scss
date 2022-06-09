@@ -1,20 +1,32 @@
 .header-lib {
   padding: 40px 0 62px;
-  background-image: url('../images/library/mobile/lib-header-mobile.jpg'),
-    linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  background-image: linear-gradient(
+      to top,
+      $color-gradient-headers,
+      $color-gradient-headers
+    ),
+    url('../images/library/mobile/lib-header-mobile.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 70%;
 
   @include screen-size(tablet) {
-    background-image: url('../images/library/tablet/lib-header-tablet.jpg'),
-      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/library/tablet/lib-header-tablet.jpg');
     padding: 40px 0 60px;
   }
 
   @include screen-size(desktop) {
-    background-image: url('../images/library/desktop/lib-header-desktop.jpg'),
-      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/library/desktop/lib-header-desktop.jpg');
   }
 }
 
