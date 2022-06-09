@@ -89,56 +89,10 @@
   color: $color-main-white;
 }
 
-.search__form {
-  position: relative;
-  margin: 0 auto 16px;
-
-  @include screen-size(tablet) {
-    margin: 0 auto 20px;
-    max-width: 336px;
-  }
+.lib-btns {
+  margin: 0 auto;
 }
 
-.search__input {
-  display: block;
-  width: 100%;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid $color-main-white;
-  background-color: transparent;
-  color: $color-main-white;
-}
-
-.search__input::placeholder {
-  color: $color-main-white;
-}
-
-.search__btn {
-  position: absolute;
-  bottom: 6px;
-  right: 0;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  fill: transparent;
-}
-
-.search__warn {
-  display: block;
-  max-width: 280px;
-  font-family: $primary-font;
-  font-size: 14px;
-  font-weight: 400;
-  color: $color-warn-text;
-
-  @include screen-size(tablet) {
-    margin: 0 auto;
-    max-width: 400px;
-  }
-}
-
-.search__warn.is-hidden {
-  display: none;
+.btn {
+  min-width: 130px;
 }
