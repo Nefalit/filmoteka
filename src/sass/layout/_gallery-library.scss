@@ -1,0 +1,13 @@
+.gallery-library {
+  margin: 0 auto;
+}
+
+.gallery-library__list {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-columns: 280px;
+  justify-content: center;
+}
