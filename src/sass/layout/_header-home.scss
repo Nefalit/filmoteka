@@ -3,7 +3,17 @@
   background-image: url('../images/home/mobile/header-bg-mobile.jpg'),
     linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+
+  @include screen-size(tablet) {
+    background-image: url('../images/home/tablet/header-bg-tablet.jpg'),
+      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  }
+
+  @include screen-size(desktop) {
+    background-image: url('../images/home/desktop/header-bg-desktop.jpg'),
+      linear-gradient(to top, $color-gradient-headers, $color-gradient-headers);
+  }
 }
 
 .navigation-wrapper {
@@ -15,7 +25,7 @@
     margin-bottom: 40px;
   }
 
-  @include screen-size(tablet) {
+  @include screen-size(desktop) {
     margin-bottom: 41px;
   }
 }
@@ -26,6 +36,19 @@
 
 .header-home__title {
   display: none;
+  color: $color-main-white;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  margin-left: 8px;
+
+  @include screen-size(tablet) {
+    display: inline-block;
+  }
+
+  @include screen-size(tablet) {
+    margin-left: 10px;
+  }
 }
 
 .nav {
@@ -76,6 +99,8 @@
 }
 
 .search__input {
+  display: block;
+  width: 100%;
   outline: none;
   border: none;
   border-bottom: 1px solid $color-main-white;
@@ -89,14 +114,13 @@
 
 .search__btn {
   position: absolute;
-  top: 0;
+  bottom: 6px;
   right: 0;
   background-color: transparent;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
   fill: transparent;
 }
 
@@ -110,7 +134,7 @@
 
   @include screen-size(tablet) {
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 400px;
   }
 }
 
