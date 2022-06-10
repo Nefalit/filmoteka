@@ -15,24 +15,25 @@ export class FilmsApi {
 
   // при вызове методов в первом then делаем деструктаризацию {data}
 
-  searchFilmsByQuery(query, page) {
-    return axios.get(
-      `${this.#BASE_URL}/?${
-        this.#ROOT_API_KEY
-      }&query=${query}&page=${page}&language=${this.lang}`
-    );
+  async searchFilmsByQuery(query) {
+    const queryFromInput = `${this.#BASE_URL}search/movie?api_key=${
+      this.#ROOT_API_KEY
+    }&query=${query}&page=${this.page}&language=${this.lang}`;
+    return this.findMovies(queryFromInput);
   }
-  
-  async findTrendingMovies() {
-    const response = await axios.get(
-      `${this.#BASE_URL}trending/movie/week?api_key=${this.#ROOT_API_KEY}`
-    );
-    const result = await response.data;
-    const { results: moviesArray } = result;
+
+  async findMovies(
+    query = `${this.#BASE_URL}trending/movie/week?api_key=${this.#ROOT_API_KEY}`
+  ) {
+    const response = await axios.get(query);
+    const {
+      data: { results: moviesArray },
+    } = response;
+
     const genresResponse = await axios.get(`${
       this.#BASE_URL
     }genre/movie/list?api_key=${this.#ROOT_API_KEY}&language=${this.lang}
-  `);
+    `);
     const genresObject = await genresResponse.data;
     const { genres: genresArray } = genresObject;
 
@@ -46,9 +47,41 @@ export class FilmsApi {
     };
 
     moviesArray.forEach(movie => {
-      movie.genre_ids = getGenresInStrings(movie.genre_ids).join(", ")
+      movie.genre_ids = getGenresInStrings(movie.genre_ids).join(', ');
     });
 
     return moviesArray;
   }
 }
+
+// async findTrendingMovies() {
+//   const response = await axios.get(
+//     `${this.#BASE_URL}trending/movie/week?api_key=${this.#ROOT_API_KEY}`
+//   );
+
+//   const {
+//     data: { results: moviesArray },
+//   } = response;
+
+//   const genresResponse = await axios.get(`${
+//     this.#BASE_URL
+//   }genre/movie/list?api_key=${this.#ROOT_API_KEY}&language=${this.lang}
+//   `);
+//   const genresObject = await genresResponse.data;
+//   const { genres: genresArray } = genresObject;
+
+//   const getGenresInStrings = arr => {
+//     return arr.reduce((acc, genre_id) => {
+//       const requiredIdx = genresArray.findIndex(
+//         genre => genre.id === genre_id
+//       );
+//       return [...acc, genresArray[requiredIdx].name];
+//     }, []);
+//   };
+
+//   moviesArray.forEach(movie => {
+//     movie.genre_ids = getGenresInStrings(movie.genre_ids).join(', ');
+//   });
+
+//   return moviesArray;
+// }
