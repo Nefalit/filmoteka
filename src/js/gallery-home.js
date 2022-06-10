@@ -1,6 +1,9 @@
+import Handlebars from "handlebars"
 import { FilmsApi } from './api';
 import filmCard from "../templates/film-card.hbs"
-const galleryEl = document.querySelector("")
+import{getYear, getPosterUrl} from "./handlebars.js"
+
+const galleryEl = document.querySelector(".container__list")
 
 export const filmsApi = new FilmsApi();
 
@@ -9,6 +12,8 @@ function getStartPage() {
     
   return filmsApi.findTrendingMovies().then(result=> {
     const markupHomepage = filmCard(result)
-
+    console.log(result);
+    galleryEl.innerHTML = markupHomepage
   });
 }
+

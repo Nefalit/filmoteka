@@ -1,2 +1,2 @@
 import api from './js/api';
-import {filmsApi} from './js/gallery'
+import {filmsApi} from './js/gallery-home'

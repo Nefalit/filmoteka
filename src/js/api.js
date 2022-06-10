@@ -15,14 +15,6 @@ export class FilmsApi {
 
   // при вызове методов в первом then делаем деструктаризацию {data}
 
-  // searchPopularFilms() {
-  //   return axios.get(
-  //     `${this.#BASE_URL}trending/movie/week?api_key=${
-  //       this.#ROOT_API_KEY
-  //     }&language=${this.lang}`
-  //   );
-  // }
-
   searchFilmsByQuery(query, page) {
     return axios.get(
       `${this.#BASE_URL}/?${
@@ -54,7 +46,7 @@ export class FilmsApi {
     };
 
     moviesArray.forEach(movie => {
-      movie.genre_ids = getGenresInStrings(movie.genre_ids);
+      movie.genre_ids = getGenresInStrings(movie.genre_ids).join(", ")
     });
 
     return moviesArray;
