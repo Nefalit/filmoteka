@@ -13,6 +13,7 @@ searchForm.addEventListener('submit', searchFormSubmitHandler);
 
 export async function searchFormSubmitHandler(event) {
   event.preventDefault();
+  searchWarn.classList.add('is-hidden');
   const { searchQuery } = event.currentTarget.elements;
   const query = searchQuery.value;
   try {
