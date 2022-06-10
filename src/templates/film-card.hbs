@@ -1,0 +1,21 @@
+{{#each this}}
+<li class='container__card'>
+  <div class='container__image-wrapper'>
+    <img
+      class='container__image'
+      src={{backdrop_path}}
+      alt={{title}}
+      loading='lazy'
+    />
+  </div>
+  <div class='container__information'>
+    <p class='container__title'>{{title}}</p>
+    <div>
+    {{#each genre_ids}}
+    <span class='container__rating'>{{this}}</span>
+    {{/each}}
+    <p class='container__text'>{{release_date.slice(0,4)}}</p>
+    </div>
+  </div>
+</li>
+{{/each}}
