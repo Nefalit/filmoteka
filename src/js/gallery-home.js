@@ -21,17 +21,17 @@ function getStartPage() {
 }
 
 export const libraryLocalStorage = {
-  onLoad(key) {
-    try {
-      const data = localStorage.getItem(key);
-      if (data === null) {
-        return key = undefined;
-      } else {
-        return JSON.parse(data)
-}   
-    } catch (error) {
-      console.log(error);
-    }
+    onLoad(key) {
+      try {
+        const data = localStorage.getItem(key);
+        if (data === null) {
+          return key = undefined;
+        } else {
+          return JSON.parse(data)
+  }   
+      } catch (error) {
+        console.log(error);
+      }
   },
 
     onSave(key, value){
@@ -55,11 +55,11 @@ export const libraryLocalStorage = {
       const localStorageData = this.onLoad(key);
       this.onSave(key, [value, ...localStorageData]);
   },
-  deleteMovie(key) {
-    try {
-      localStorage.removeItem(key);
-    } catch (error) {
-      console.log(error);
-      }
+    deleteMovie(key) {
+      try {
+        localStorage.removeItem(key);
+      } catch (error) {
+        console.log(error);
+        }
     }
 }
