@@ -1,26 +1,26 @@
-   <img class="modal__poster" src="{{image}}" alt="{{alt}}">
-    <table  class="modal__table" border="1">
-      <th class="modal__title" colspan="2">{{Title_film}}</th>
+   <img class="modal__poster" src="{{getPosterUrl poster_path}}" alt="{{title:}}">
+    <table  class="modal__table">
+      <th class="modal__title" colspan="2">{{title}}</th>
       <tr>
         <td class="modal__item modal__item-votes">Vote/Votes</td>
-        <td class="modal__item-value modal__item-value-votes"><span class="modall__span-vote">{{значение}}</span> / {{значение}}</td>
+        <td class="modal__item-value modal__item-value-votes"><span class="modall__span-vote">{{vote_average}}</span> / {{getYear release_date}}</td>
       </tr>
       <tr>
         <td class="modal__item modal__item-popularity">Popularity</td>
-        <td class="modal__item-value modal__item-value-popularity">{{значение}}</td>
+        <td class="modal__item-value modal__item-value-popularity">{{popularity}}</td>
       </tr>
       <tr>
         <td class="modal__item modal__item-orig-title">Origrnal Title</td>
-        <td class="modal__item-value modal__item-value-orig-title">{{значение}}</td>
+        <td class="modal__item-value modal__item-value-orig-title">{{original_title}}</td>
       </tr>
       <tr>
         <td class="modal__item modal__item-genre">Genre</td>
-        <td class="modal__item-value modal__item-value-genre">{{значение}}</td>
+        <td class="modal__item-value modal__item-value-genre">{{genre_ids}}</td>
       </tr>
       <tr>
         <td class="modal__item modal__item-about" colspan="2">Abaut</td>
       </tr>
-      <td class="modal__item-value modal__item-value-about" colspan="2">{{значение}}</td>
+      <td class="modal__item-value modal__item-value-about" colspan="2">{{overview}}</td>
 
         <tr class="modal__buttons">
           <td>
