@@ -19,8 +19,6 @@ function getStartPage() {
     .then(result => {
       const markupHomepage = filmCard(result);
       localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
-      // console.log(result);
-
       galleryEl.innerHTML = markupHomepage;
     })
     .catch(err => console.log(err));
