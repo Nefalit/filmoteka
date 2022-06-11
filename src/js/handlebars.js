@@ -15,3 +15,13 @@ export const getPosterUrl = Handlebars.registerHelper(
     return `https://image.tmdb.org/t/p/w500${string}`;
   }
 );
+
+export const getShortPopularity = Handlebars.registerHelper(
+  'getShortPopularity',
+  function (number) {
+    if (!number) {
+      return 'Unknown';
+    }
+    return number.toFixed(1);
+  }
+);

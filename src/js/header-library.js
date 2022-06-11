@@ -6,19 +6,19 @@ import { getYear, getPosterUrl } from './handlebars.js';
 
 const btnWatchedEl = document.querySelector('.js-btn-watched');
 const btnQueueEl = document.querySelector('.js-btn-queue');
-const galleryLibEl = document.querySelector('.gallery-library__list');
+export const galleryLibEl = document.querySelector('.gallery-library__list');
+export const watchedArr = load('watchedPageFilms');
+export const queueArr = load('queuePageFilms');
 
 btnWatchedEl.addEventListener('click', getDataWatched);
 btnQueueEl.addEventListener('click', getDataQueue);
 
 function getDataWatched() {
-  const watchedArr = load('watchedPageFilms');
   const watchedMarkup = libraryFilmCard(watchedArr);
   galleryLibEl.innerHTML = watchedMarkup;
 }
 
 function getDataQueue() {
-  const queueArr = load('queuePageFilms');
   const queueMarkup = libraryFilmCard(queueArr);
   galleryLibEl.innerHTML = queueMarkup;
 }
