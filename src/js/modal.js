@@ -47,10 +47,10 @@ export function filmCardClickHandler(ev) {
   btnWatchedEl.addEventListener('click', saveToWatchedStorage);
   btnQueueEl.addEventListener('click', saveToQueueStorage);
 
-  function saveToWatchedStorage(ev) {
+  function saveToWatchedStorage() {
     save(WATCHED_PAGE_FILMS, requedFilm);
   }
-  function saveToQueueStorage(ev) {
+  function saveToQueueStorage() {
     save(QUEUE_PAGE_FILMS, requedFilm);
   }
   btnCloseModal.addEventListener('click', filmCardCloseWindow);

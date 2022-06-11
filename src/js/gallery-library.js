@@ -1,10 +1,12 @@
 import Handlebars from 'handlebars';
-import libraryCard from '../templates/library-card.hbs';
+// import libraryCard from '../templates/library-card.hbs';
 import { getYear, getPosterUrl, getShortPopularity } from './handlebars.js';
 import filmModal from '../templates/modal.hbs';
 // import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from '../index';
 import { galleryLibEl } from './header-library';
 import { watchedArr, queueArr } from './header-library';
+import { save, load } from './local-storage';
+
 
 const backdrop = document.querySelector('.backdrop');
 const modalInfoFilm = document.querySelector('.modal__info-film');
@@ -19,7 +21,7 @@ function libCardClickHandler(event) {
   const unitedStorageArr = [...watchedArr, ...queueArr];
   const currentFilmIdx = unitedStorageArr.findIndex(el => el.id === currentId);
   const currentFilm = unitedStorageArr[currentFilmIdx];
-  console.log(unitedStorageArr);
+
   const markup = filmModal(currentFilm);
 
   modalInfoFilm.innerHTML = markup;
@@ -32,11 +34,12 @@ function libCardClickHandler(event) {
   btnWatchedEl.addEventListener('click', saveToWatchedStorage);
   btnQueueEl.addEventListener('click', saveToQueueStorage);
 
-  function saveToWatchedStorage(ev) {
-    save(WATCHED_PAGE_FILMS, requedFilm);
+  function saveToWatchedStorage() {
+    save('watchedPageFilms', currentFilm);
+    console.log(currentFilm);
   }
-  function saveToQueueStorage(ev) {
-    save(QUEUE_PAGE_FILMS, requedFilm);
+  function saveToQueueStorage() {
+    save('queuePageFilms', currentFilm);
   }
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
   document.addEventListener('keydown', filmCardCloseWindowByEsc);
