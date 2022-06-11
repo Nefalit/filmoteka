@@ -23,50 +23,41 @@ td {
   transform: translate(-50%, -50%);
   background: #ffffff;
   text-align: end;
-
-  @include screen-size(mobile) {
-    width: 280px;
-    height: 940px;
-  }
+  padding: 48px 20px 40px;
+  width: 280px;
+  height: auto;
 
   @include screen-size(tablet) {
     width: 704px;
-    height: 552px;
+    padding: 40px 72px 40px 36px;
   }
 
   @include screen-size(desktop) {
     width: 814px;
-    height: 558px;
+    padding: 40px 16px;
   }
 }
 
 .modal__button-close-modal {
-  position: relative;
-  margin-bottom: 20px;
+  position: absolute;
   top: 16px;
   right: 16px;
-  width: 30px;
-  height: 30px;
+  width: 14px;
+  height: 14px;
   padding: 0px;
   border: 0px;
   background: none;
-
-  @include screen-size(tablet) {
-    margin-bottom: 12px;
-  }
+}
+.modal__icon {
+  stroke: $color-main-text;
 }
 
 .modal__info-film {
-  @include screen-size(mobile) {
-    padding: 0px 20px;
-  }
+  
   @include screen-size(tablet) {
-    padding: 0px 36px;
     display: flex;
   }
-  @include screen-size(desktop) {
-    padding: 0px 16px;
-  }
+
 }
 
 .modal__poster {
