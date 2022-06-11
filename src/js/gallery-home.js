@@ -8,7 +8,7 @@ import {
   QUEUE_PAGE_FILMS,
 } from '../index';
 
-export const galleryEl = document.querySelector('.container__list');
+const galleryEl = document.querySelector('.container__list');
 
 export const filmsApi = new FilmsApi();
 
@@ -19,8 +19,6 @@ function getStartPage() {
     .then(result => {
       const markupHomepage = filmCard(result);
       localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
-      // console.log(result);
-
       galleryEl.innerHTML = markupHomepage;
     })
     .catch(err => console.log(err));

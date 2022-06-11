@@ -7,22 +7,22 @@ import {
   WATCHED_PAGE_FILMS,
   QUEUE_PAGE_FILMS,
 } from '../index';
+import { save, load } from './local-storage';
 
 const galleryListEl = document.querySelector('.container__list');
 const modalEl = document.querySelector('.modal__window');
 const modalInfoFilm = document.querySelector('.modal__info-film');
 const btnCloseModal = document.querySelector('.modal__button-close-modal');
-
 galleryListEl.addEventListener('click', filmCardClickHandler);
 
-function filmCardClickHandler(ev) {
-  modalEl.classList.remove('is-hidden');
+export function filmCardClickHandler(ev) {
   if (ev.target.parentNode.parentNode.className !== 'container__card') {
     return;
   }
+  modalEl.classList.remove('is-hidden');
 
   const collectionFilmsFromLS = JSON.parse(
-    localStorage.getItem('currentPageFilms')
+    localStorage.getItem(CURRENT_PAGE_FILMS)
   );
 
   const idElementByClick = Number(ev.target.parentNode.parentNode.id);
@@ -30,8 +30,7 @@ function filmCardClickHandler(ev) {
     elem => elem.id === idElementByClick
   );
 
-  // modalInfoFilm.innerHTML = filmModal(collectionFilmsFromLS[indexObdectFilm])
-
+  const requedFilm = collectionFilmsFromLS[indexObdectFilm];
   const popularity =
     collectionFilmsFromLS[indexObdectFilm].popularity.toFixed(1);
   const {
@@ -54,10 +53,32 @@ function filmCardClickHandler(ev) {
     overview,
     popularity,
   });
-}
 
-btnCloseModal.addEventListener('click', filmCardCloseWindow);
+  const btnWatchedEl = document.querySelector('.modal__button-watched');
+  const btnQueueEl = document.querySelector('.modal__button-queue');
+  btnWatchedEl.addEventListener('click', saveToWatchedStorage);
+  btnQueueEl.addEventListener('click', saveToQueueStorage);
 
-function filmCardCloseWindow() {
-  modalEl.classList.add('is-hidden');
+  function saveToWatchedStorage(ev) {
+    save(WATCHED_PAGE_FILMS, requedFilm);
+  }
+  function saveToQueueStorage(ev) {
+    save(QUEUE_PAGE_FILMS, requedFilm);
+  }
+  btnCloseModal.addEventListener('click', filmCardCloseWindow);
+  document.addEventListener('keydown', filmCardCloseWindowByEsc);
+
+  function filmCardCloseWindowByEsc(ev) {
+    if (ev.code !== 'Escape') {
+      return;
+    }
+    filmCardCloseWindow();
+  }
+
+  function filmCardCloseWindow() {
+    modalEl.classList.add('is-hidden');
+    btnCloseModal.removeEventListener('click', filmCardCloseWindow);
+    btnWatchedEl.removeEventListener('click', saveToWatchedStorage);
+    btnQueueEl.removeEventListener('click', saveToQueueStorage);
+  }
 }
