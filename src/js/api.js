@@ -23,7 +23,7 @@ export class FilmsApi {
   }
 
   async findMovies(
-    query = `${this.#BASE_URL}trending/movie/week?api_key=${this.#ROOT_API_KEY}`
+    query = `${this.#BASE_URL}trending/movie/week?api_key=${this.#ROOT_API_KEY}&language=${this.lang}`
   ) {
     const response = await axios.get(query);
     const {
