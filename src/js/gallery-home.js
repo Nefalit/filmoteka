@@ -8,7 +8,7 @@ import {
   QUEUE_PAGE_FILMS,
 } from '../index';
 
-const galleryEl = document.querySelector('.container__list');
+export const galleryEl = document.querySelector('.container__list');
 
 export const filmsApi = new FilmsApi();
 
