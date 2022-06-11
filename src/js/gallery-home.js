@@ -16,22 +16,19 @@ getStartPage();
 function getStartPage() {
 
     
-  return filmsApi.findTrendingMovies().then(result=> {
-    const markupHomepage = filmCard(result)
-    localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result))
-    console.log(result);
+  // return filmsApi.findTrendingMovies().then(result => {
+  //   const markupHomepage = filmCard(result)
+  //   localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result))
+  //   console.log(result);
     
-    galleryEl.innerHTML = markupHomepage
-  }).catch(err=>console.log(err));
-}
+  //   galleryEl.innerHTML = markupHomepage
+  // }).catch(err => console.log(err));
 
-  return filmsApi
-    .findMovies()
+
+  return filmsApi.findMovies()
     .then(result => {
       const markupHomepage = filmCard(result);
       localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
       galleryEl.innerHTML = markupHomepage;
-    })
-    .catch(err => console.log(err));
-}
-
+    }).catch(err => console.log(err));
+  }
