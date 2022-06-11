@@ -9,15 +9,19 @@ export const searchInput = document.querySelector('.js-search-input');
 export const searchBtn = document.querySelector('.js-search-btn');
 export const searchWarn = document.querySelector('.js-search-warn');
 
-searchWarn.classList.add('is-hidden');
+searchWarn.classList.add('is--hidden');
+searchBtn.classList.remove('is--hidden');
 
 searchForm.addEventListener('submit', searchFormSubmitHandler);
 searchInput.addEventListener('input', searchInputHandler);
 
 function searchInputHandler(event) {
+  searchBtn.classList.remove('is--hidden');
+  searchWarn.classList.add('is--hidden');
   const input = event.target.value;
   if (input === '') {
-    searchWarn.classList.add('is-hidden');
+    searchBtn.classList.remove('is--hidden');
+    searchWarn.classList.add('is--hidden');
   }
 }
 
@@ -28,10 +32,11 @@ export async function searchFormSubmitHandler(event) {
   try {
     const moviesArray = await filmsApi.searchFilmsByQuery(query);
     if (!moviesArray.length) {
-      searchWarn.classList.remove('is-hidden');
+      searchBtn.classList.add('is--hidden');
+      searchWarn.classList.remove('is--hidden');
       return;
     }
-    searchWarn.classList.add('is-hidden');
+    searchWarn.classList.add('is--hidden');
     galleryEl.innerHTML = filmCard(moviesArray);
     localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(moviesArray));
   } catch (error) {

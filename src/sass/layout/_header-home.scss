@@ -108,6 +108,7 @@
 
 .search__form {
   position: relative;
+  overflow: hidden;
   margin: 0 auto 16px;
 
   @include screen-size(tablet) {
@@ -132,14 +133,20 @@
 
 .search__btn {
   position: absolute;
-  bottom: 6px;
+  bottom: 0;
   right: 0;
+  padding: 5px;
   background-color: transparent;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   fill: transparent;
+  transition: transform $animation;
+}
+
+.search__btn.is--hidden {
+  transform: translateY(0);
 }
 
 .search__warn {
@@ -149,6 +156,8 @@
   font-size: 14px;
   font-weight: 400;
   color: $color-warn-text;
+  transform: scalex(1);
+  transition: transform $animation;
 
   @include screen-size(tablet) {
     margin: 0 auto;
@@ -156,6 +165,6 @@
   }
 }
 
-.search__warn.is-hidden {
-  display: none;
+.search__warn.is--hidden {
+  transform: scalex(0);
 }
