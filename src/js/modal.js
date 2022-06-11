@@ -15,7 +15,7 @@ const modalInfoFilm = document.querySelector('.modal__info-film');
 const btnCloseModal = document.querySelector('.modal__button-close-modal');
 galleryListEl.addEventListener('click', filmCardClickHandler);
 
-function filmCardClickHandler(ev) {
+export function filmCardClickHandler(ev) {
   if (ev.target.parentNode.parentNode.className !== 'container__card') {
     return;
   }
