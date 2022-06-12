@@ -15,7 +15,7 @@ export const filmsApi = new FilmsApi();
 getStartPage();
 function getStartPage() {
 
-    
+
   // return filmsApi.findTrendingMovies().then(result => {
   //   const markupHomepage = filmCard(result)
   //   localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result))
