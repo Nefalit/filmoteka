@@ -2,6 +2,7 @@ import Handlebars from 'handlebars';
 import { FilmsApi } from './api';
 import filmCard from '../templates/film-card.hbs';
 import { getYear, getPosterUrl } from './handlebars.js';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import {
   CURRENT_PAGE_FILMS,
   WATCHED_PAGE_FILMS,
@@ -13,8 +14,8 @@ export const galleryEl = document.querySelector('.container__list');
 export const filmsApi = new FilmsApi();
 
 getStartPage();
-function getStartPage() {
-  return filmsApi
+async function getStartPage() {
+  return await filmsApi
     .findMovies()
     .then(result => {
       const markupHomepage = filmCard(result);
