@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import { FilmsApi } from './api';
 import filmModal from '../templates/modal.hbs';
-import { getYear, getPosterUrl } from './handlebars.js';
+import { getYear, getPosterUrl, getShortPopularity } from './handlebars.js';
 import {
   CURRENT_PAGE_FILMS,
   WATCHED_PAGE_FILMS,
@@ -10,7 +10,7 @@ import {
 import { save, load } from './local-storage';
 
 const galleryListEl = document.querySelector('.container__list');
-const modalEl = document.querySelector('.modal__window');
+const backdrop = document.querySelector('.backdrop');
 const modalInfoFilm = document.querySelector('.modal__info-film');
 const btnCloseModal = document.querySelector('.modal__button-close-modal');
 galleryListEl.addEventListener('click', filmCardClickHandler);
@@ -19,7 +19,6 @@ export function filmCardClickHandler(ev) {
   if (ev.target.parentNode.parentNode.className !== 'container__card') {
     return;
   }
-  modalEl.classList.remove('is-hidden');
 
   const collectionFilmsFromLS = JSON.parse(
     localStorage.getItem(CURRENT_PAGE_FILMS)
@@ -31,38 +30,27 @@ export function filmCardClickHandler(ev) {
   );
 
   const requedFilm = collectionFilmsFromLS[indexObdectFilm];
-  const popularity =
-    collectionFilmsFromLS[indexObdectFilm].popularity.toFixed(1);
-  const {
-    poster_path,
-    title,
-    vote_average,
-    release_date,
-    original_title,
-    genre_ids,
-    overview,
-  } = collectionFilmsFromLS[indexObdectFilm];
 
-  modalInfoFilm.innerHTML = filmModal({
-    poster_path,
-    title,
-    vote_average,
-    release_date,
-    original_title,
-    genre_ids,
-    overview,
-    popularity,
-  });
+  modalInfoFilm.innerHTML = filmModal(requedFilm);
+
+  backdrop.classList.remove('visually-hidden');
+  backdrop.addEventListener('click', backdropCloseModal);
+
+  function backdropCloseModal(event) {
+    if (event.target.classList.contains('backdrop')) {
+      filmCardCloseWindow();
+    }
+  }
 
   const btnWatchedEl = document.querySelector('.modal__button-watched');
   const btnQueueEl = document.querySelector('.modal__button-queue');
   btnWatchedEl.addEventListener('click', saveToWatchedStorage);
   btnQueueEl.addEventListener('click', saveToQueueStorage);
 
-  function saveToWatchedStorage(ev) {
+  function saveToWatchedStorage() {
     save(WATCHED_PAGE_FILMS, requedFilm);
   }
-  function saveToQueueStorage(ev) {
+  function saveToQueueStorage() {
     save(QUEUE_PAGE_FILMS, requedFilm);
   }
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
@@ -76,9 +64,11 @@ export function filmCardClickHandler(ev) {
   }
 
   function filmCardCloseWindow() {
-    modalEl.classList.add('is-hidden');
+    backdrop.classList.add('visually-hidden');
     btnCloseModal.removeEventListener('click', filmCardCloseWindow);
     btnWatchedEl.removeEventListener('click', saveToWatchedStorage);
     btnQueueEl.removeEventListener('click', saveToQueueStorage);
+    document.removeEventListener('keydown', filmCardCloseWindowByEsc);
+    backdrop.removeEventListener('click', backdropCloseModal);
   }
 }
