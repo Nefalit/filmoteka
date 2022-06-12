@@ -31,6 +31,7 @@ export async function searchFormSubmitHandler(event) {
   const query = searchQuery.value;
   try {
     const moviesArray = await filmsApi.searchFilmsByQuery(query);
+    Loading.remove()
     if (!moviesArray.length) {
       searchBtn.classList.add('is--hidden');
       searchWarn.classList.remove('is--hidden');

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 // ROOT_API_KEY: 'f3ea85ad66a7076fbd3968a20cd79e45';
 // BASE_URL: 'https://api.themoviedb.org/3/search/movie';
@@ -25,6 +26,7 @@ export class FilmsApi {
   async findMovies(
     query = `${this.#BASE_URL}trending/movie/week?api_key=${this.#ROOT_API_KEY}&language=${this.lang}`
   ) {
+    Loading.circle();
     const response = await axios.get(query);
     const {
       data: { results: moviesArray },
