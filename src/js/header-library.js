@@ -18,7 +18,7 @@ function getDataWatched() {
   galleryLibEl.innerHTML = watchedMarkup;
 }
 
-function getDataQueue() {
+export function getDataQueue() {
   const queueMarkup = libraryFilmCard(queueArr);
   galleryLibEl.innerHTML = queueMarkup;
 }

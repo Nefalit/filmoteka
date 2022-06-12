@@ -47,6 +47,12 @@
 .gallery-library__card {
   display: flex;
   flex-direction: column;
+  transform: scale(1);
+  transition: transform 300ms linear;
+}
+.gallery-library__card:hover,
+.gallery-library__card:focus {
+    transform: scale(1.04);
 }
 
 .gallery-library__info-wrap {

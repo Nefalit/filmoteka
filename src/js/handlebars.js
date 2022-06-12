@@ -6,11 +6,12 @@ export const getYear = Handlebars.registerHelper('getYear', function (string) {
   }
   return string.slice(0, 4);
 });
+
 export const getPosterUrl = Handlebars.registerHelper(
   'getPosterUrl',
   function (string) {
     if (!string) {
-      return "./images/body/template.jpg";
+      return "../images/body/template.jpg";
     }
     return `https://image.tmdb.org/t/p/w500${string}`;
   }

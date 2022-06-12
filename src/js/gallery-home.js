@@ -14,11 +14,10 @@ export const galleryEl = document.querySelector('.container__list');
 export const filmsApi = new FilmsApi();
 
 getStartPage();
-function getStartPage() {
-  return filmsApi
+async function getStartPage() {
+  return await filmsApi
     .findMovies()
     .then(result => {
-      Loading.remove()
       const markupHomepage = filmCard(result);
       localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
       galleryEl.innerHTML = markupHomepage;
