@@ -20,8 +20,9 @@ const save = (key, value) => {
     const film = JSON.stringify([value]);
     localStorage.setItem(key, film);
   } catch (error) {
-    Notiflix.Notify.failure(`Set state error: ${error.message}`);
-    // console.error('Set state error: ', error.message);
+    Notiflix.Notify.failure(`Set state error: ${error.message}`, {
+      timeout: 250,
+    });
   }
 };
 
@@ -30,8 +31,9 @@ const load = key => {
     const filmsArr = localStorage.getItem(key);
     return filmsArr === null ? undefined : JSON.parse(filmsArr);
   } catch (error) {
-    Notiflix.Notify.failure(`Get state error: ${error.message}`);
-    // console.error('Get state error: ', error.message);
+    Notiflix.Notify.failure(`Error to loading`, {
+      timeout: 250,
+    });
   }
 };
 // const onLoad = key => {

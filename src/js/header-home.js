@@ -41,7 +41,9 @@ export async function searchFormSubmitHandler(event) {
     galleryEl.innerHTML = filmCard(moviesArray);
     localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(moviesArray));
   } catch (error) {
-    Notiflix.Notify.failure(`${error.message}`);
+    Notiflix.Notify.failure(`${error.message}`, {
+      timeout: 250,
+    });
     // console.log(error.message);
   }
 }
