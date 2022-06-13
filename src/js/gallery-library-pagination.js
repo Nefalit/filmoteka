@@ -1,17 +1,17 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import libraryFilmCard from '../templates/library-card.hbs';
+import { load } from './local-storage';
 
 const galleryList = document.querySelector('.gallery-library__list');
 const watchedBtn = document.querySelector('.js-btn-watched');
 const queuedBtn = document.querySelector('.js-btn-queue');
 
-const watchedItemsArr = JSON.parse(localStorage.getItem('watchedPageFilms'));
-const queueItemsArr = JSON.parse(localStorage.getItem('queuePageFilms'));
-const watchedTotalItems = watchedItemsArr.length;
-const queueTotalItems = queueItemsArr.length;
+const watchedItemsArr = load('watchedPageFilms');
+const queueItemsArr = load('queuePageFilms');
+const watchedTotalItems = watchedItemsArr?.length || 0;
+const queueTotalItems = queueItemsArr?.length || 0;
 const showPerPage = 20;
-let currentPage = 1;
 let selectedList = '';
 
 export const pagination = new Pagination('pagination', {
@@ -27,12 +27,12 @@ export function renderGallery(arr) {
   galleryList.insertAdjacentHTML('beforeend', libraryFilmCard(arr));
 }
 
-const filtereQueuedArr = queueItemsArr.filter((item, idx) => idx < showPerPage);
+const filtereQueuedArr =
+  queueItemsArr?.filter((item, idx) => idx < showPerPage) || [];
 renderGallery(filtereQueuedArr);
 
-const filteredwatchedArr = watchedItemsArr.filter(
-  (item, idx) => idx < showPerPage
-);
+const filteredwatchedArr =
+  watchedItemsArr?.filter((item, idx) => idx < showPerPage) || [];
 
 watchedBtn.addEventListener('click', event => {
   if (selectedList === 'watched') return;
@@ -52,11 +52,13 @@ queuedBtn.addEventListener('click', event => {
 });
 
 pagination.on('afterMove', event => {
-  currentPage = event.page;
+  const currentPage = event.page;
   const firstIdx = (currentPage - 1) * showPerPage;
   const lastIdx = firstIdx + showPerPage;
   const arrToRender =
     selectedList === 'watched' ? watchedItemsArr : queueItemsArr;
+
+  if (!arrToRender) return;
 
   renderGallery(arrToRender.slice(firstIdx, lastIdx));
 });
