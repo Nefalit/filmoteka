@@ -11,6 +11,7 @@ import {
   WATCHED_PAGE_FILMS,
   QUEUE_PAGE_FILMS,
 } from '../index';
+import Notiflix from 'notiflix';
 
 export const container = document.querySelector('#pagination');
 const containerForSearchedMovies = document.querySelector('#pagination1');
@@ -31,7 +32,7 @@ async function getStartPage() {
       localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
       galleryEl.innerHTML = markupHomepage;
     })
-    .catch(err => console.log(err));
+    .catch(err => Notiflix.Notify.failure(`${err}`));
 }
 
 const {
