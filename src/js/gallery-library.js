@@ -1,6 +1,11 @@
 import Handlebars from 'handlebars';
 // import libraryCard from '../templates/library-card.hbs';
-import { getYear, getPosterUrl, getShortPopularity } from './handlebars.js';
+import {
+  getYear,
+  getPosterUrl,
+  getShortPopularity,
+  getShortGenres,
+} from './handlebars.js';
 import filmModal from '../templates/modal.hbs';
 import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from './api-variables.js';
 import { galleryLibEl } from './header-library';
@@ -45,7 +50,7 @@ function libCardClickHandler(event) {
     const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
     queueArr.splice(requiredInd, 1);
     localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
-    
+
     save(WATCHED_PAGE_FILMS, currentFilm);
   }
 
