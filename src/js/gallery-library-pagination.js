@@ -15,7 +15,7 @@ let currentPage = 1;
 let selectedList = '';
 
 export const pagination = new Pagination('pagination', {
-  totalItems: watchedTotalItems,
+  totalItems: queueTotalItems,
   itemsPerPage: showPerPage,
   visiblePages: 5,
   centerAlign: true,
@@ -28,11 +28,11 @@ export function renderGallery(arr) {
 }
 
 const filtereQueuedArr = queueItemsArr.filter((item, idx) => idx < showPerPage);
+renderGallery(filtereQueuedArr);
 
 const filteredwatchedArr = watchedItemsArr.filter(
   (item, idx) => idx < showPerPage
 );
-renderGallery(filteredwatchedArr);
 
 watchedBtn.addEventListener('click', event => {
   if (selectedList === 'watched') return;
