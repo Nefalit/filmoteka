@@ -1,5 +1,5 @@
 .header-home {
-  padding: 40px 0 44px;
+  padding: 40px 0 92px;
   background-image: linear-gradient(
       to top,
       $color-gradient-headers,
@@ -19,6 +19,7 @@
   background-size: cover;
 
   @include screen-size(tablet) {
+    padding-bottom: 80px;
     background-image: linear-gradient(
         to top,
         $color-gradient-headers,
@@ -53,10 +54,6 @@
         url('../images/home/desktop/header-bg-desktop@2x.jpg');
     }
   }
-}
-
-.header-home__container {
-  position: relative;
 }
 
 .navigation-wrapper {
@@ -139,11 +136,10 @@
 
 .search__form {
   position: relative;
-  overflow: hidden;
-  margin: 0 auto 16px;
+  margin: 0 auto;
 
   @include screen-size(tablet) {
-    margin: 0 auto 20px;
+    // margin: 0 auto 20px;
     max-width: 336px;
   }
 }
@@ -180,12 +176,12 @@
   justify-content: center;
   align-items: center;
   fill: transparent;
-  transform: translatey(0);
+  transform: scale(1);
   transition: transform $animation;
 }
 
 .search__btn.is-hidden {
-  transform: translateY(22px);
+  transform: scale(0);
 }
 
 .search__warn {
@@ -199,11 +195,12 @@
   font-weight: 400;
   color: $color-warn-text;
   transform: scalex(1);
+  transform-origin: center;
   transition: transform $animation;
 
   @include screen-size(tablet) {
-    margin: 0 auto;
-    max-width: 400px;
+    bottom: -34px;
+    min-width: 700px;
   }
 }
 

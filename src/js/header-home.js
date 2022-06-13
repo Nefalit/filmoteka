@@ -31,9 +31,9 @@ async function getQueryPage(query) {
       if (!result.length) {
         searchBtn.classList.add('is-hidden');
         searchWarn.classList.remove('is-hidden');
-        galleryEl.innerHTML =
-          '<li class="container__card"><img src="../images/body/template.jpg" alt="template"></li>';
-        container.classList.add('visually-hidden');
+        // galleryEl.innerHTML =
+        //   '<li class="container__card"><img src="../images/body/template.jpg" alt="template"></li>';
+        // container.classList.add('visually-hidden');
         return;
       }
       searchWarn.classList.add('is-hidden');

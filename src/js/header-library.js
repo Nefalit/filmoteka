@@ -10,7 +10,7 @@ export const galleryLibEl = document.querySelector('.gallery-library__list');
 export const watchedArr = load(WATCHED_PAGE_FILMS);
 export const queueArr = load(QUEUE_PAGE_FILMS);
 
-btnQueueEl.classList.toggle('btn--active');
+btnQueueEl.classList.add('btn--active');
 
 btnWatchedEl.addEventListener('click', getDataWatched);
 btnQueueEl.addEventListener('click', getDataQueue);
@@ -19,7 +19,7 @@ function getDataWatched() {
   btnWatchedEl.classList.add('btn--active');
   btnWatchedEl.classList.remove('btn--bright');
   btnQueueEl.classList.add('btn--bright');
-  btnQueueEl.classList.toggle('btn--active');
+  btnQueueEl.classList.remove('btn--active');
   const watchedMarkup = libraryFilmCard(watchedArr);
   galleryLibEl.innerHTML = watchedMarkup;
 }
@@ -28,7 +28,7 @@ export function getDataQueue() {
   btnQueueEl.classList.add('btn--active');
   btnQueueEl.classList.remove('btn--bright');
   btnWatchedEl.classList.add('btn--bright');
-  btnWatchedEl.classList.toggle('btn--active');
+  btnWatchedEl.classList.remove('btn--active');
   const queueMarkup = libraryFilmCard(queueArr);
   galleryLibEl.innerHTML = queueMarkup;
 }
