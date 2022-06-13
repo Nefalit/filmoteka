@@ -1,28 +1,14 @@
-.gallery-home {
-  // padding-top: 20px;
-  // padding-bottom: 40px;
-
-  // @include screen-size(tablet) {
-  //   padding: 60px 0;
-  // }
-
-  // @include screen-size(desktop) {
-  //   padding-top: 32px;
-  // }
-}
-
 .container__gallery {
   background-color: $color-main-white;
   padding-top: 20px;
   padding-bottom: 40px;
 
-    @include screen-size(tablet) {
+  @include screen-size(tablet) {
     padding: 60px 0px;
   }
 
   // @include screen-size(desktop) {
   //   padding-top: 32px;
-
 }
 .container__list {
   // padding-top: 20px;
@@ -55,7 +41,7 @@
 
 .container__card:hover,
 .container__card:focus {
-    transform: scale(1.04);
+  transform: scale(1.04);
 }
 
 .container__image {
