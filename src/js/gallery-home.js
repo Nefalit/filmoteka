@@ -10,7 +10,7 @@ import {
   CURRENT_PAGE_FILMS,
   WATCHED_PAGE_FILMS,
   QUEUE_PAGE_FILMS,
-} from '../index';
+} from './api-variables.js';
 import Notiflix from 'notiflix';
 
 export const container = document.querySelector('#pagination');
@@ -34,7 +34,7 @@ async function getStartPage() {
     })
     .catch(err =>
       Notiflix.Notify.failure(`${err}`, {
-        timeout: 250,
+        timeout: 1000,
       })
     );
 }
@@ -48,7 +48,7 @@ const {
 const paginationOptions = {
   totalItems: totalTrendingMovies,
   itemsPerPage: 20,
-  visiblePages: 1,
+  visiblePages: 5,
   page: currentLoadedPage,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
