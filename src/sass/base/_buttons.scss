@@ -1,0 +1,23 @@
+#scrollTop {
+  position: fixed;
+  bottom: 5px;
+  right: 20px;
+  z-index: 9999;
+  fill: $color-rating;
+  cursor: pointer;
+  @include screen-size(tablet) {
+    bottom: 90px;
+    right: 20px;
+  }
+  @include screen-size(desktop) {
+    bottom: 75px;
+    right: 50px;
+  }
+}
+.isShowBtn {
+  opacity: 1;
+  transition: 1s;
+  &_hide {
+    opacity: 0;
+  }
+}

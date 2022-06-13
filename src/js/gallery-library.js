@@ -6,6 +6,8 @@ import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from './api-variables.js';
 import { galleryLibEl } from './header-library';
 import { watchedArr, queueArr, getDataQueue } from './header-library';
 import { save, load } from './local-storage';
+import libraryFilmCard from '../templates/library-card.hbs';
+import { whatArrIsOpen } from './header-library.js';
 
 getDataQueue();
 const backdrop = document.querySelector('.backdrop');
@@ -40,12 +42,21 @@ function libCardClickHandler(event) {
   btnQueueEl.addEventListener('click', saveToLibQueueStorage);
 
   function saveToLibWatchedStorage() {
+    const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
+    queueArr.splice(requiredInd, 1);
+    localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
+    
     save(WATCHED_PAGE_FILMS, currentFilm);
-    console.log(currentFilm);
   }
+
   function saveToLibQueueStorage() {
+    const requiredInd = watchedArr.findIndex(el => el.id === currentFilm.id);
+    watchedArr.splice(requiredInd, 1);
+    localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
+
     save(QUEUE_PAGE_FILMS, currentFilm);
   }
+
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
   document.addEventListener('keydown', filmCardCloseWindowByEsc);
 
@@ -63,6 +74,12 @@ function libCardClickHandler(event) {
   }
 
   function filmCardCloseWindow() {
+    if (whatArrIsOpen === 'queue') {
+      galleryLibEl.innerHTML = libraryFilmCard(queueArr);
+    } else {
+      galleryLibEl.innerHTML = libraryFilmCard(watchedArr);
+    }
+
     backdrop.classList.add('visually-hidden');
     btnCloseModal.removeEventListener('click', filmCardCloseWindow);
     btnWatchedEl.removeEventListener('click', saveToLibWatchedStorage);

@@ -6,3 +6,4 @@ import {
   searchBtn,
   searchFormSubmitHandler,
 } from './js/header-home.js';
+import btn from './js/button-scroll-up.js';

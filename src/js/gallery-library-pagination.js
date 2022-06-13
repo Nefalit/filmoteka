@@ -2,13 +2,14 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import libraryFilmCard from '../templates/library-card.hbs';
 import { load } from './local-storage';
+import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from './api-variables.js';
 
 const galleryList = document.querySelector('.gallery-library__list');
 const watchedBtn = document.querySelector('.js-btn-watched');
 const queuedBtn = document.querySelector('.js-btn-queue');
 
-const watchedItemsArr = load('watchedPageFilms');
-const queueItemsArr = load('queuePageFilms');
+const watchedItemsArr = load(WATCHED_PAGE_FILMS);
+const queueItemsArr = load(QUEUE_PAGE_FILMS);
 const watchedTotalItems = watchedItemsArr?.length || 0;
 const queueTotalItems = queueItemsArr?.length || 0;
 const showPerPage = 20;
