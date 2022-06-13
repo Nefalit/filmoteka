@@ -3,6 +3,7 @@ import { getYear, getPosterUrl } from './handlebars.js';
 import { filmsApi } from './gallery-home';
 import { galleryEl } from './gallery-home';
 import { CURRENT_PAGE_FILMS } from '..';
+import Notiflix from 'notiflix';
 
 export const searchForm = document.querySelector('.js-search-form');
 export const searchInput = document.querySelector('.js-search-input');
@@ -40,6 +41,7 @@ export async function searchFormSubmitHandler(event) {
     galleryEl.innerHTML = filmCard(moviesArray);
     localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(moviesArray));
   } catch (error) {
-    console.log(error.message);
+    Notiflix.Notify.failure(`${error.message}`);
+    // console.log(error.message);
   }
 }
