@@ -8,6 +8,7 @@ import { paginationOptions } from './gallery-home';
 import { container } from './gallery-home';
 import { load } from './local-storage';
 import { CURRENT_PAGE_FILMS } from '..';
+import Notiflix from 'notiflix';
 
 export const searchForm = document.querySelector('.js-search-form');
 export const searchInput = document.querySelector('.js-search-input');
@@ -73,6 +74,21 @@ export async function searchFormSubmitHandler(event) {
   // } catch (error) {
   //   console.log(error.message);
   // }
+
+//   try {
+//     const moviesArray = await filmsApi.searchFilmsByQuery(query);
+//     if (!moviesArray.length) {
+//       searchBtn.classList.add('is--hidden');
+//       searchWarn.classList.remove('is--hidden');
+//       return;
+//     }
+//     searchWarn.classList.add('is--hidden');
+//     galleryEl.innerHTML = filmCard(moviesArray);
+//     localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(moviesArray));
+//   } catch (error) {
+//     Notiflix.Notify.failure(`${error.message}`);
+//     // console.log(error.message);
+//   }
 }
 
 const {
