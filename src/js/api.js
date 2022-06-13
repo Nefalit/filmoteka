@@ -29,7 +29,7 @@ export class FilmsApi {
       this.#ROOT_API_KEY
     }&language=${this.lang}&page=${this.page}`
   ) {
-    Loading.circle();
+    Loading.standard('Loading...',{svgColor:'#ff6b01',messageColor:'#ff6b01'});
 
     const response = await axios.get(query);
     const {
