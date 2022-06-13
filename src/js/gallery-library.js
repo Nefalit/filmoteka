@@ -2,12 +2,12 @@ import Handlebars from 'handlebars';
 // import libraryCard from '../templates/library-card.hbs';
 import { getYear, getPosterUrl, getShortPopularity } from './handlebars.js';
 import filmModal from '../templates/modal.hbs';
-// import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from '../index';
+import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from './api-variables.js';
 import { galleryLibEl } from './header-library';
 import { watchedArr, queueArr, getDataQueue } from './header-library';
 import { save, load } from './local-storage';
 
-getDataQueue()
+getDataQueue();
 const backdrop = document.querySelector('.backdrop');
 const modalInfoFilm = document.querySelector('.modal__info-film');
 const btnCloseModal = document.querySelector('.modal__button-close-modal');
@@ -18,7 +18,12 @@ function libCardClickHandler(event) {
     return;
   }
   const currentId = Number(event.target.closest('.gallery-library__card').id);
-  const unitedStorageArr = [...watchedArr, ...queueArr];
+  const unitedStorageArr =
+    watchedArr && queueArr
+      ? [...watchedArr, ...queueArr]
+      : watchedArr
+      ? [...watchedArr]
+      : [...queueArr];
   const currentFilmIdx = unitedStorageArr.findIndex(el => el.id === currentId);
   const currentFilm = unitedStorageArr[currentFilmIdx];
 
@@ -35,11 +40,11 @@ function libCardClickHandler(event) {
   btnQueueEl.addEventListener('click', saveToLibQueueStorage);
 
   function saveToLibWatchedStorage() {
-    save('watchedPageFilms', currentFilm);
+    save(WATCHED_PAGE_FILMS, currentFilm);
     console.log(currentFilm);
   }
   function saveToLibQueueStorage() {
-    save('queuePageFilms', currentFilm);
+    save(QUEUE_PAGE_FILMS, currentFilm);
   }
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
   document.addEventListener('keydown', filmCardCloseWindowByEsc);

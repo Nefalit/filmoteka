@@ -6,7 +6,7 @@ import {
   CURRENT_PAGE_FILMS,
   WATCHED_PAGE_FILMS,
   QUEUE_PAGE_FILMS,
-} from '../index';
+} from './api-variables.js';
 import { save, load } from './local-storage';
 import Notiflix from 'notiflix';
 
@@ -43,30 +43,17 @@ export function filmCardClickHandler(ev) {
     }
   }
 
-  let accWatched = 0;
-  let accQueue = 0;
+  
   const btnWatchedEl = document.querySelector('.modal__button-watched');
   const btnQueueEl = document.querySelector('.modal__button-queue');
   btnWatchedEl.addEventListener('click', saveToWatchedStorage);
   btnQueueEl.addEventListener('click', saveToQueueStorage);
 
   function saveToWatchedStorage(ev) {
-    accWatched += 1;
     save(WATCHED_PAGE_FILMS, requedFilm);
-    if (accWatched === 1) {
-      Notiflix.Notify.success('Success: The film added to watched', {
-        timeout: 250,
-      });
-    }
   }
   function saveToQueueStorage() {
-    accQueue += 1;
     save(QUEUE_PAGE_FILMS, requedFilm);
-    if (accQueue === 1) {
-      Notiflix.Notify.success('Success: The film added to queue', {
-        timeout: 250,
-      });
-    }
   }
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
   document.addEventListener('keydown', filmCardCloseWindowByEsc);
@@ -86,6 +73,4 @@ export function filmCardClickHandler(ev) {
     document.removeEventListener('keydown', filmCardCloseWindowByEsc);
     backdrop.removeEventListener('click', backdropCloseModal);
   }
-  accWatched = 0;
-  accQueue = 0;
 }
