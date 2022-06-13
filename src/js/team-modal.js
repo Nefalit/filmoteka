@@ -48,16 +48,15 @@ function openModal(e) {
   modal.show();
 
   window.addEventListener('keydown', closeModalHandler);
-  function backdropCloseModal(event) {
-    if (event.target.classList.contains('backdrop')) {
-      filmCardCloseWindow();
-    }
-  }
+
   function closeModalHandler(e) {
     if (e.code === 'Escape') {
       modal.close();
       window.removeEventListener('keydown', closeModalHandler);
     }
+      if (!modal) {
+    modal.close();
+    window.removeEventListener('keydown', closeModalHandler);
+    }
   }
 }
-  backdrop.addEventListener('click', backdropCloseModal);

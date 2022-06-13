@@ -4,24 +4,24 @@
 
 .team-modal {
     text-decoration: underline;
-
     cursor: pointer;
 }
 
 .team-wrapper {
-    background-image: url(../images/team/tarantino.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-wrap: wrap;
     width: 800px;
     height: auto;
     margin: -20px;
+
+    background-image: url(../images/team/tarantino.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
     @include screen-size(mobile-only){
         margin-top: 70px;
     }
@@ -88,14 +88,16 @@
 
 .team-container {
 text-align: center;
-
 }
 
 .team-text {
     color: $color-accent;
-    
+    margin-bottom: 5px;
+    font-size: 16px;
 }
 
 .team-members {
     color: $color-accent;
+    text-transform: uppercase;
+    font-size: 24px;
 }
