@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import {FULL_RESPONSE_DATA} from './api-variables.js'
+import { FULL_RESPONSE_DATA } from './api-variables.js';
 
 // ROOT_API_KEY: 'f3ea85ad66a7076fbd3968a20cd79e45';
 // BASE_URL: 'https://api.themoviedb.org/3/search/movie';
@@ -29,7 +29,10 @@ export class FilmsApi {
       this.#ROOT_API_KEY
     }&language=${this.lang}&page=${this.page}`
   ) {
-    Loading.standard('Loading...',{svgColor:'#ff6b01',messageColor:'#ff6b01'});
+    Loading.standard('Loading...', {
+      svgColor: '#ff6b01',
+      messageColor: '#ff6b01',
+    });
 
     const response = await axios.get(query);
     const {
