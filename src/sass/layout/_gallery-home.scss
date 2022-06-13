@@ -1,5 +1,6 @@
+
 .container__gallery {
-  background-color: $color-main-white;
+  background-color: $color-logo;
   padding-top: 20px;
   padding-bottom: 40px;
 
@@ -7,8 +8,6 @@
     padding: 60px 0px;
   }
 
-  // @include screen-size(desktop) {
-  //   padding-top: 32px;
 }
 .container__list {
   // padding-top: 20px;

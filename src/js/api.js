@@ -15,8 +15,6 @@ export class FilmsApi {
     this.lang = 'uk';
   }
 
-  // при вызове методов в первом then делаем деструктаризацию {data}
-
   async searchFilmsByQuery(query) {
     const queryFromInput = `${this.#BASE_URL}search/movie?api_key=${
       this.#ROOT_API_KEY
