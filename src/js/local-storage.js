@@ -12,7 +12,6 @@ const save = (key, value) => {
       }
       const updatedStorage = JSON.stringify([value, ...parsedCurrentStorage]);
       localStorage.setItem(key, updatedStorage);
-
       return;
     }
     const film = JSON.stringify([value]);
