@@ -4,7 +4,7 @@ const save = (key, value) => {
   try {
     const currentStorage = localStorage.getItem(key);
     const parsedCurrentStorage = JSON.parse(currentStorage);
-
+    
     if (Array.isArray(parsedCurrentStorage)) {
       const requiredIndx = parsedCurrentStorage.findIndex(
         elem => elem.id === value.id
@@ -14,14 +14,16 @@ const save = (key, value) => {
       }
       const updatedStorage = JSON.stringify([value, ...parsedCurrentStorage]);
       localStorage.setItem(key, updatedStorage);
-
+      Notiflix.Notify.success('Success: The film added to watched', {
+        timeout: 1000,
+      });
       return;
     }
     const film = JSON.stringify([value]);
     localStorage.setItem(key, film);
   } catch (error) {
-    Notiflix.Notify.failure(`Set state error: ${error.message}`, {
-      timeout: 250,
+    Notiflix.Notify.failure(`${error.message}`, {
+      timeout: 1000,
     });
   }
 };
@@ -32,7 +34,7 @@ const load = key => {
     return filmsArr === null ? undefined : JSON.parse(filmsArr);
   } catch (error) {
     Notiflix.Notify.failure(`Error to loading`, {
-      timeout: 250,
+      timeout: 1000,
     });
   }
 };

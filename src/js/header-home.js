@@ -10,7 +10,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 // import { paginationOptions } from './gallery-home';
 import { load } from './local-storage';
-import { CURRENT_PAGE_FILMS } from '..';
+import { CURRENT_PAGE_FILMS } from './api-variables.js';
 import Notiflix from 'notiflix';
 
 export const searchForm = document.querySelector('.js-search-form');

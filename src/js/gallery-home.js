@@ -10,7 +10,7 @@ import {
   CURRENT_PAGE_FILMS,
   WATCHED_PAGE_FILMS,
   QUEUE_PAGE_FILMS,
-} from '../index';
+} from './api-variables.js';
 import Notiflix from 'notiflix';
 
 export const container = document.querySelector('#pagination');
@@ -20,6 +20,7 @@ export const galleryEl = document.querySelector('.container__list');
 export const paginationGeneralOptions = {
   itemsPerPage: 20,
   visiblePages: 5,
+
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
