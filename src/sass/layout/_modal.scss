@@ -26,6 +26,8 @@ td {
   padding: 48px 20px 40px;
   width: 280px;
   height: auto;
+  border-radius: 5px;
+
 
   @include screen-size(tablet) {
     width: 704px;
@@ -194,6 +196,8 @@ td {
 
   background-color: $color-rating;
   color: $color-main-white;
+  transition: background-color $animation;
+
 }
 
 .modal__button-watched {

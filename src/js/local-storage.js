@@ -5,7 +5,7 @@ const save = (key, value) => {
     const currentStorage = localStorage.getItem(key);
     const parsedCurrentStorage = JSON.parse(currentStorage);
     
-    if (Array.isArray(parsedCurrentStorage)) {
+    if (Array.isArray(parsedCurrentStorage))  {
       const requiredIndx = parsedCurrentStorage.findIndex(
         elem => elem.id === value.id
       );
