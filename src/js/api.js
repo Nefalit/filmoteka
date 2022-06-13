@@ -24,36 +24,40 @@ export class FilmsApi {
   }
 
   async findMovies(
-    query = `${this.#BASE_URL}trending/movie/week?api_key=${this.#ROOT_API_KEY}&language=${this.lang}`
+    query = `${this.#BASE_URL}trending/movie/week?api_key=${
+      this.#ROOT_API_KEY
+    }&language=${this.lang}&page=${this.page}`
   ) {
     Loading.circle();
+
     const response = await axios.get(query);
     const {
       data: { results: moviesArray },
     } = response;
-    
+
+    localStorage.setItem('fullResponseData', JSON.stringify(response.data));
+
     const genresResponse = await axios.get(`${
       this.#BASE_URL
     }genre/movie/list?api_key=${this.#ROOT_API_KEY}&language=${this.lang}
     `);
     const genresObject = await genresResponse.data;
     const { genres: genresArray } = genresObject;
-    
+
     const getGenresInStrings = arr => {
       return arr.reduce((acc, genre_id) => {
         const requiredIdx = genresArray.findIndex(
           genre => genre.id === genre_id
-          );
-          return [...acc, genresArray[requiredIdx].name];
-        }, []);
-      };
-      
-      moviesArray.forEach(movie => {
-        movie.genre_ids = getGenresInStrings(movie.genre_ids).join(', ');
-      });
-      
-      Loading.remove();
+        );
+        return [...acc, genresArray[requiredIdx].name];
+      }, []);
+    };
+
+    moviesArray.forEach(movie => {
+      movie.genre_ids = getGenresInStrings(movie.genre_ids).join(', ');
+    });
+
+    Loading.remove();
     return moviesArray;
   }
 }
-
