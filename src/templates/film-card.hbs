@@ -1,20 +1,20 @@
 {{#each this}}
   <li id={{id}} class='container__card'>
-      <div class='container__image-wrapper'>
-        <img
-          class='container__image'
-          src={{getPosterUrl poster_path}}
-          alt={{title}}
-          loading='lazy'
-        />
+    <div class='container__image-wrapper'>
+      <img
+        class='container__image'
+        src={{getPosterUrl poster_path}}
+        alt={{title}}
+        loading='lazy'
+      />
+    </div>
+    <div class='container__information'>
+      <p class='container__title'>{{title}}</p>
+      <div>
+        <p class='container__text'>{{getShortGenres genre_ids}}
+          |
+          {{getYear release_date}}</p>
       </div>
-      <div class='container__information'>
-        <p class='container__title'>{{title}}</p>
-        <div>
-          <p class='container__text'>{{genre_ids}}
-            |
-            {{getYear release_date}}</p>
-        </div>
-      </div>
+    </div>
   </li>
 {{/each}}

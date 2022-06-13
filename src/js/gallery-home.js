@@ -3,7 +3,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { FilmsApi } from './api';
 import filmCard from '../templates/film-card.hbs';
-import { getYear, getPosterUrl } from './handlebars.js';
+import { getYear, getPosterUrl, getShortGenres } from './handlebars.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { load } from './local-storage';
 import {

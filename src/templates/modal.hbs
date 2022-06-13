@@ -6,7 +6,7 @@
 <table class='modal__table'>
   <th class='modal__title' colspan='2'>{{title}}</th>
   <tr>
-    <td class='modal__item modal__item-votes'>Vote/Votes</td>
+    <td class='modal__item modal__item-votes'>Голос/Голоси</td>
     <td class='modal__item-value modal__item-value-votes'><span
         class='modall__span-vote'
       >{{vote_average}}</span>
@@ -14,38 +14,40 @@
       {{getYear release_date}}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-popularity'>Popularity</td>
+    <td class='modal__item modal__item-popularity'>Популярність</td>
     <td
       class='modal__item-value modal__item-value-popularity'
     >{{getShortPopularity popularity}}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-orig-title'>Origrnal Title</td>
+    <td class='modal__item modal__item-orig-title'>Оригінальна назва</td>
     <td
       class='modal__item-value modal__item-value-orig-title'
     >{{original_title}}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-genre'>Genre</td>
-    <td class='modal__item-value modal__item-value-genre'>{{genre_ids}}</td>
+    <td class='modal__item modal__item-genre'>Жанр</td>
+    <td class='modal__item-value modal__item-value-genre'>{{getShortGenres
+        genre_ids
+      }}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-about' colspan='2'>About</td>
+    <td class='modal__item modal__item-about' colspan='2'>Про фільм</td>
   </tr>
   <td
     class='modal__item-value modal__item-value-about'
     colspan='2'
-  >{{overview}}</td>
+  >{{getOverview overview}}</td>
 
   <tr class='modal__buttons'>
     <td>
       <button class='modal__button modal__button-watched' type='button'>
-        ADD TO WATCHED
+        В ПЕРЕГЛЯНУТІ
       </button>
     </td>
     <td>
       <button class='modal__button modal__button-queue' type='button'>
-        ADD TO QUEUE
+        ДОДАТИ ДО ЧЕРГИ
       </button>
     </td>
   </tr>

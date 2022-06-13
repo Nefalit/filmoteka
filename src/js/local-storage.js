@@ -4,6 +4,7 @@ const save = (key, value) => {
   try {
     const currentStorage = localStorage.getItem(key);
     const parsedCurrentStorage = JSON.parse(currentStorage);
+
     
     if (Array.isArray(parsedCurrentStorage))  {
       const requiredIndx = parsedCurrentStorage.findIndex(
@@ -21,6 +22,9 @@ const save = (key, value) => {
     }
     const film = JSON.stringify([value]);
     localStorage.setItem(key, film);
+    Notiflix.Notify.success('Success: The film added to watched', {
+      timeout: 1000,
+    });
   } catch (error) {
     Notiflix.Notify.failure(`${error.message}`, {
       timeout: 1000,
@@ -38,39 +42,5 @@ const load = key => {
     });
   }
 };
-// const onLoad = key => {
-//   try {
-//     const data = localStorage.getItem(key);
-//     if (data === null) {
-//       return (key = undefined);
-//     } else {
-//       return JSON.parse(data);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const onSave = (key, value) => {
-//   try {
-//     const data = JSON.stringify(value);
-
-//     localStorage.setItem(key, data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// const getMovieKey = key => {
-//   const storage = onLoad(key);
-//   if (Array.isArray(storage)) {
-//     return storage;
-//   }
-//   onSave(key, []);
-//   return [];
-// };
-// const addMovie = (key, value) => {
-//   const localStorageData = onLoad(key);
-//   onSave(key, [value, ...localStorageData]);
-// };
 
 export { save, load };
