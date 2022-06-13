@@ -29,7 +29,7 @@ async function getStartPage() {
     .findMovies()
     .then(result => {
       const markupHomepage = filmCard(result);
-      localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
+      localStorage.setItem('currentPageFilms', JSON.stringify(result));
       galleryEl.innerHTML = markupHomepage;
     })
     .catch(err => Notiflix.Notify.failure(`${err}`));
@@ -44,7 +44,7 @@ const {
 const paginationOptions = {
   totalItems: totalTrendingMovies,
   itemsPerPage: 20,
-  visiblePages: 1,
+  visiblePages: 5,
   page: currentLoadedPage,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
