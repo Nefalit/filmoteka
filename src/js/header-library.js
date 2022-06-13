@@ -20,8 +20,19 @@ function getDataWatched() {
   btnWatchedEl.classList.remove('btn--bright');
   btnQueueEl.classList.add('btn--bright');
   btnQueueEl.classList.toggle('btn--active');
-  const watchedMarkup = libraryFilmCard(watchedArr);
-  galleryLibEl.innerHTML = watchedMarkup;
+  const filmsArr = localStorage.getItem(WATCHED_PAGE_FILMS);
+  const watchedArr1 = JSON.parse(filmsArr);
+  // const watchedArr1 = load(WATCHED_PAGE_FILMS);
+  console.log(watchedArr1);
+  const watchedMarkup = libraryFilmCard(watchedArr1);
+  // console.log(watchedMarkup);
+  // galleryLibEl.insertAdjacentHTML('afterbegin', watchedMarkup);
+  render(watchedMarkup);
+}
+function render(markup) {
+  console.log('here');
+  galleryLibEl.insertAdjacentHTML('afterbegin', markup);
+  console.log('123123');
 }
 
 export function getDataQueue() {

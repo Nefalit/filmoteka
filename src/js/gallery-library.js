@@ -39,13 +39,24 @@ function libCardClickHandler(event) {
   btnWatchedEl.addEventListener('click', saveToLibWatchedStorage);
   btnQueueEl.addEventListener('click', saveToLibQueueStorage);
 
-  function saveToLibWatchedStorage() {
-    save(WATCHED_PAGE_FILMS, currentFilm);
-    console.log(currentFilm);
+  function checkQueueOrWatched(arr, film) {
+    if (arr.find(el => el.id === film.id)) {
+      return;
+    }
   }
+
+  function saveToLibWatchedStorage() {
+    // if (queueArr.find(el=> el.id === currentFilm.id)) {}
+    const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
+    queueArr.splice(requiredInd, 1);
+    localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
+    save(WATCHED_PAGE_FILMS, currentFilm);
+  }
+
   function saveToLibQueueStorage() {
     save(QUEUE_PAGE_FILMS, currentFilm);
   }
+  
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
   document.addEventListener('keydown', filmCardCloseWindowByEsc);
 
