@@ -33,6 +33,7 @@
 
 .container__card {
   display: flex;
+  cursor: pointer;
   flex-direction: column;
   transform: scale(1);
   transition: transform 300ms linear;

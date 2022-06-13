@@ -1,15 +1,4 @@
-// .gallery-library {
-//   padding-top: 20px;
-//   padding-bottom: 40px;
-//   @include screen-size(tablet) {
-//     padding-top: 60px;
-//     padding-bottom: 60px;
-//   }
 
-//   @include screen-size(desktop) {
-//     padding-top: 32px;
-//   }
-// }
 .container__gallery-lib {
   background-color: $color-logo;
   padding-top: 20px;
@@ -49,6 +38,7 @@
   flex-direction: column;
   transform: scale(1);
   transition: transform 300ms linear;
+  cursor: pointer;
 }
 .gallery-library__card:hover,
 .gallery-library__card:focus {
@@ -89,11 +79,12 @@
 }
 
 .gallery-library__genre {
-  max-width: 120px;
+  margin-right: 8px;
+  // max-width: 120px;
 
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
 }
 
 .gallery-library__year {
