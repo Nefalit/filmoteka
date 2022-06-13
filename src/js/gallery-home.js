@@ -32,7 +32,11 @@ async function getStartPage() {
       localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
       galleryEl.innerHTML = markupHomepage;
     })
-    .catch(err => Notiflix.Notify.failure(`${err}`));
+    .catch(err =>
+      Notiflix.Notify.failure(`${err}`, {
+        timeout: 250,
+      })
+    );
 }
 
 const {
