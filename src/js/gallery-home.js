@@ -10,7 +10,7 @@ import {
   CURRENT_PAGE_FILMS,
   WATCHED_PAGE_FILMS,
   QUEUE_PAGE_FILMS,
-} from '../index';
+} from './api-variables.js';
 import Notiflix from 'notiflix';
 
 export const container = document.querySelector('#pagination');
@@ -29,12 +29,12 @@ async function getStartPage() {
     .findMovies()
     .then(result => {
       const markupHomepage = filmCard(result);
-      localStorage.setItem('currentPageFilms', JSON.stringify(result));
+      localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
       galleryEl.innerHTML = markupHomepage;
     })
     .catch(err =>
       Notiflix.Notify.failure(`${err}`, {
-        timeout: 250,
+        timeout: 1000,
       })
     );
 }
