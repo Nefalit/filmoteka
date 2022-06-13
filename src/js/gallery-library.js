@@ -7,7 +7,7 @@ import { galleryLibEl } from './header-library';
 import { watchedArr, queueArr, getDataQueue } from './header-library';
 import { save, load } from './local-storage';
 
-getDataQueue()
+getDataQueue();
 const backdrop = document.querySelector('.backdrop');
 const modalInfoFilm = document.querySelector('.modal__info-film');
 const btnCloseModal = document.querySelector('.modal__button-close-modal');
@@ -18,7 +18,12 @@ function libCardClickHandler(event) {
     return;
   }
   const currentId = Number(event.target.closest('.gallery-library__card').id);
-  const unitedStorageArr = [...watchedArr, ...queueArr];
+  const unitedStorageArr =
+    watchedArr && queueArr
+      ? [...watchedArr, ...queueArr]
+      : watchedArr
+      ? [...watchedArr]
+      : [...queueArr];
   const currentFilmIdx = unitedStorageArr.findIndex(el => el.id === currentId);
   const currentFilm = unitedStorageArr[currentFilmIdx];
 

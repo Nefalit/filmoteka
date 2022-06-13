@@ -6,6 +6,15 @@
       $color-gradient-headers
     ),
     url('../images/home/mobile/header-bg-mobile.jpg');
+
+  @include screen-size(retina) {
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/home/mobile/header-bg-mobile@2x.jpg');
+  }
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -16,6 +25,15 @@
         $color-gradient-headers
       ),
       url('../images/home/tablet/header-bg-tablet.jpg');
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/home/tablet/header-bg-tablet@2x.jpg');
+    }
   }
 
   @include screen-size(desktop) {
@@ -25,6 +43,15 @@
         $color-gradient-headers
       ),
       url('../images/home/desktop/header-bg-desktop.jpg');
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/home/desktop/header-bg-desktop@2x.jpg');
+    }
   }
 }
 
@@ -129,8 +156,13 @@
   outline: none;
   border: none;
   border-bottom: 1px solid $color-main-white;
+  transition: border $animation;
   background-color: transparent;
   color: $color-main-white;
+}
+
+.search__input:focus {
+  border-bottom: 1px solid $color-fields-names;
 }
 
 .search__input::placeholder {

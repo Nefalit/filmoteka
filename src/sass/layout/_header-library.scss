@@ -6,6 +6,15 @@
       $color-gradient-headers
     ),
     url('../images/library/mobile/lib-header-mobile.jpg');
+
+  @include screen-size(retina) {
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/library/mobile/lib-header-mobile@2x.jpg');
+  }
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 70%;
@@ -18,6 +27,15 @@
       ),
       url('../images/library/tablet/lib-header-tablet.jpg');
     padding: 40px 0 60px;
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/library/tablet/lib-header-tablet@2x.jpg');
+    }
   }
 
   @include screen-size(desktop) {
@@ -27,6 +45,15 @@
         $color-gradient-headers
       ),
       url('../images/library/desktop/lib-header-desktop.jpg');
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/library/desktop/lib-header-desktop@2x.jpg');
+    }
   }
 }
 

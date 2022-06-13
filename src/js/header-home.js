@@ -58,8 +58,11 @@ export async function searchFormSubmitHandler(event) {
   const query = searchQuery.value;
   filmsApi.page = 1;
   container.classList.add('visually-hidden');
-  containerForSearchedMovies.classList.remove('visually-hidden');
+  if (query === '') {
+    return;
+  }
   getQueryPage(query);
+  containerForSearchedMovies.classList.remove('visually-hidden');
   // try {
   //   const moviesArray = await filmsApi.searchFilmsByQuery(query);
   //   if (!moviesArray.length) {
@@ -75,11 +78,8 @@ export async function searchFormSubmitHandler(event) {
   // }
 }
 
-const {
-  total_pages: totalPages,
-  total_results: totalSearchedMovies,
-  page: currentLoadedPage,
-} = load('fullResponseData');
+const { total_results: totalSearchedMovies, page: currentLoadedPage } =
+  load('fullResponseData');
 
 const paginationOptions = {
   totalItems: totalSearchedMovies,
@@ -111,7 +111,7 @@ const paginationOfSearchPage = new Pagination(
   containerForSearchedMovies,
   paginationOptions
 );
-// paginationOfSearchPage.reset(totalSearchedMovies);
+
 paginationOfSearchPage.on('afterMove', event => {
   const currentPage = event.page;
   const currentQueue = searchInput.value;
