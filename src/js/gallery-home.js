@@ -14,42 +14,13 @@ import {
 import Notiflix from 'notiflix';
 
 export const container = document.querySelector('#pagination');
-const containerForSearchedMovies = document.querySelector('#pagination1');
 
 export const galleryEl = document.querySelector('.container__list');
 
-export const filmsApi = new FilmsApi();
-filmsApi.page = 1;
-containerForSearchedMovies.classList.add('visually-hidden');
-
-getStartPage();
-
-async function getStartPage() {
-  return await filmsApi
-    .findMovies()
-    .then(result => {
-      const markupHomepage = filmCard(result);
-      localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
-      galleryEl.innerHTML = markupHomepage;
-    })
-    .catch(err =>
-      Notiflix.Notify.failure(`${err}`, {
-        timeout: 1000,
-      })
-    );
-}
-
-const {
-  total_pages: totalPages,
-  total_results: totalTrendingMovies,
-  page: currentLoadedPage,
-} = load('fullResponseData');
-
-const paginationOptions = {
-  totalItems: totalTrendingMovies,
+export const paginationGeneralOptions = {
   itemsPerPage: 20,
   visiblePages: 5,
-  page: currentLoadedPage,
+
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
@@ -72,13 +43,36 @@ const paginationOptions = {
   },
 };
 
-export const paginationOfMainPage = new Pagination(
-  container,
-  paginationOptions
-);
-paginationOfMainPage.reset(totalTrendingMovies);
-paginationOfMainPage.on('afterMove', event => {
-  const currentPage = event.page;
-  filmsApi.page = currentPage;
-  getStartPage();
-});
+export const filmsApi = new FilmsApi();
+filmsApi.page = 1;
+
+getStartPage();
+
+async function getStartPage() {
+  return await filmsApi
+    .findMovies()
+    .then(result => {
+      const markupHomepage = filmCard(result);
+      localStorage.setItem('currentPageFilms', JSON.stringify(result));
+
+      const { total_results: totalTrendingMovies, page: currentLoadedPage } =
+        load('fullResponseData');
+
+      const paginationOptions = {
+        totalItems: totalTrendingMovies,
+        page: currentLoadedPage,
+        ...paginationGeneralOptions,
+      };
+
+      const paginationOfMainPage = new Pagination(container, paginationOptions);
+
+      paginationOfMainPage.on('afterMove', event => {
+        const currentPage = event.page;
+        filmsApi.page = currentPage;
+        getStartPage();
+      });
+
+      galleryEl.innerHTML = markupHomepage;
+    })
+    .catch(err => Notiflix.Notify.failure(`${err}`));
+}
