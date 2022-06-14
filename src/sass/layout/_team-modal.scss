@@ -127,7 +127,7 @@
 .team-image {
     margin-bottom: 10px;
     width: 150px;
-    height: auto;
+    height: 150px;
     @include screen-size(mobile-only) {
         width: 150px;
          height: 90px;
