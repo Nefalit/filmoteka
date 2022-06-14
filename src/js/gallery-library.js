@@ -1,5 +1,4 @@
 import Handlebars from 'handlebars';
-// import libraryCard from '../templates/library-card.hbs';
 import {
   getYear,
   getPosterUrl,
@@ -8,19 +7,27 @@ import {
 } from './handlebars.js';
 import filmModal from '../templates/modal.hbs';
 import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from './api-variables.js';
-import { galleryLibEl } from './header-library';
-import { watchedArr, queueArr, getDataQueue } from './header-library';
 import { save, load } from './local-storage';
-import libraryFilmCard from '../templates/library-card.hbs';
-import { whatArrIsOpen } from './header-library.js';
+import {
+  selectedList,
+  getDataQueue,
+  getDataWatched,
+  firstIdxWatched,
+  firstIdxQueue,
+} from './gallery-library-pagination';
 
-getDataQueue();
+const galleryLibEl = document.querySelector('.gallery-library__list');
+
 const backdrop = document.querySelector('.backdrop');
 const modalInfoFilm = document.querySelector('.modal__info-film');
 const btnCloseModal = document.querySelector('.modal__button-close-modal');
 galleryLibEl.addEventListener('click', libCardClickHandler);
 
+getDataQueue();
+
 function libCardClickHandler(event) {
+  const watchedArr = load(WATCHED_PAGE_FILMS);
+  const queueArr = load(QUEUE_PAGE_FILMS);
   if (event.target.nodeName === 'UL') {
     return;
   }
@@ -47,19 +54,24 @@ function libCardClickHandler(event) {
   btnQueueEl.addEventListener('click', saveToLibQueueStorage);
 
   function saveToLibWatchedStorage() {
+    const queueArr = load(QUEUE_PAGE_FILMS);
+
     const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
     queueArr.splice(requiredInd, 1);
     localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
 
     save(WATCHED_PAGE_FILMS, currentFilm);
+    firstIdxQueue = 0;
   }
 
   function saveToLibQueueStorage() {
+    const watchedArr = load(WATCHED_PAGE_FILMS);
     const requiredInd = watchedArr.findIndex(el => el.id === currentFilm.id);
     watchedArr.splice(requiredInd, 1);
     localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
 
     save(QUEUE_PAGE_FILMS, currentFilm);
+    firstIdxWatched = 0;
   }
 
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
@@ -79,10 +91,10 @@ function libCardClickHandler(event) {
   }
 
   function filmCardCloseWindow() {
-    if (whatArrIsOpen === 'queue') {
-      galleryLibEl.innerHTML = libraryFilmCard(queueArr);
+    if (selectedList === 'queue') {
+      getDataQueue();
     } else {
-      galleryLibEl.innerHTML = libraryFilmCard(watchedArr);
+      getDataWatched();
     }
 
     backdrop.classList.add('visually-hidden');

@@ -1,7 +1,4 @@
-import header from './js/header-library.js';
+import btn from './js/button-scroll-up.js';
 import gallery from './js/gallery-library.js';
 import { pagination } from './js/gallery-library-pagination';
 
-export const CURRENT_PAGE_FILMS = 'currentPageFilms';
-export const WATCHED_PAGE_FILMS = 'watchedPageFilms';
-export const QUEUE_PAGE_FILMS = 'queuePageFilms';

@@ -6,11 +6,6 @@ import filmCard from '../templates/film-card.hbs';
 import { getYear, getPosterUrl, getShortGenres } from './handlebars.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { load } from './local-storage';
-import {
-  CURRENT_PAGE_FILMS,
-  WATCHED_PAGE_FILMS,
-  QUEUE_PAGE_FILMS,
-} from './api-variables.js';
 import Notiflix from 'notiflix';
 
 export const container = document.querySelector('#pagination');

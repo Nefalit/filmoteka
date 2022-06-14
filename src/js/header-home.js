@@ -8,7 +8,6 @@ import {
 } from './gallery-home';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-// import { paginationOptions } from './gallery-home';
 import { load } from './local-storage';
 import { CURRENT_PAGE_FILMS } from './api-variables.js';
 import Notiflix from 'notiflix';
@@ -31,9 +30,6 @@ async function getQueryPage(query) {
       if (!result.length) {
         searchBtn.classList.add('is-hidden');
         searchWarn.classList.remove('is-hidden');
-        // galleryEl.innerHTML =
-        //   '<li class="container__card"><img src="../images/body/template.jpg" alt="template"></li>';
-        // container.classList.add('visually-hidden');
         return;
       }
       searchWarn.classList.add('is-hidden');
