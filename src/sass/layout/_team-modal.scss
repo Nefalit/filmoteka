@@ -14,36 +14,32 @@
     transform: translate(-50%, -50%);
     display: flex;
     flex-wrap: wrap;
-    // width: 800px;
     height: auto;
-    // margin: -20px;
-
-    background-image: url(../images/team/tarantino.jpeg);
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    @include screen-size(mobile-only){
-        padding-top: 100px;
-            background-image: url(../images/team/team-bg.jpeg);
-                background-repeat: no-repeat;
-                background-size: cover;
-               
-    }
-
     width: 260px;
 
     background-color: $color-main-white;
     border-radius: 15px;
 
+    background-image: url(../images/team/tarantino.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include screen-size(mobile-only){
+        padding-top: 100px;
+        background-image: url(../images/team/team-bg.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
     @include screen-size(tablet) {
         width: 700px;
-        height: 486px;
+        height: 500px;
         border-radius: 25px;
     }
 
     @include screen-size(desktop) {
-        // margin: -30px;
-        height: 486px;
+        object-fit: cover;
+        height: 500px;
         width: 700px;
     }
 }
@@ -54,31 +50,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-        @include screen-size(mobile-only) {
-    margin: 20px;
-    
+    @include screen-size(mobile-only) {
+        margin: 20px;
         width: calc((100% - 80px) / 2);
-            }
-
-
-    // @include screen-size(tablet) {
-    //     width: calc((100% - 160px) / 4);
-    // }
-
-    // @include screen-size(desktop) {
-    //     margin: 30px;
-
-    //     width: calc((100% - 240px) / 4);
-    // }
+    }
 }
-
-
 
 .team-card-lisa {
     @include screen-size(tablet) {
         position: relative;
-        top: 276px;
-        left: -25px;
+        top: 310px;
+        left: -110px;
         width: 150px;
         height: auto;
     }
@@ -88,7 +70,7 @@
     @include screen-size(tablet) {
         position: relative;
         top: 20px;
-        left: 20px;
+        left: 100px;
         width: 150px;
         height: auto;
     }
@@ -97,8 +79,8 @@
 .team-card-ilya {
     @include screen-size(tablet) {
         position: relative;
-        top: 20px;
-        left: 380px;
+        top: 50px;
+        left: 330px;
         width: 150px;
         height: auto;
     }
@@ -107,8 +89,8 @@
 .team-card-lena {
     @include screen-size(tablet) {
         position: relative;
-        top: 275px;
-        left: 80px;
+        top: 310px;
+        left: 65px;
         width: 150px;
         height: auto;
     }
@@ -117,7 +99,7 @@
 .team-card-roma {
     @include screen-size(tablet) {
         position: relative;
-        top: 30px;
+        top: -30px;
         left: 20px;
         width: 150px;
         height: auto;
@@ -128,14 +110,14 @@
     margin-bottom: 10px;
     width: 150px;
     height: 150px;
-    @include screen-size(mobile-only) {
-        width: 150px;
-         height: 90px;
-     }
-
 
     border-radius: 5px;
     box-shadow: 5px 5px 5px -1px $color-accent;
+
+    @include screen-size(mobile-only) {
+         width: 150px;
+         height: 90px;
+     }
 }
 
 .team-name {
@@ -146,49 +128,27 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 1.33;
-    color: $color-accent;
 
+    color: $color-accent;
     border-bottom: 4px solid $color-accent;
-// box-shadow: $color-main-white 0px 3px 5px 0px;
 }
 
 .team-container {
-text-align: center;
+    text-align: center;
     position: fixed;
-        top: 50%;
-        left: 50%;
-        // right: 20%;
-        transform: translate(-50%, -50%);
-        top: -150px;
-        // display: flex;
-        // flex-wrap: wrap;
-        width: 165px;
-        height:100px;
-        // margin: -20px;
-        margin-left: 20px;
-        margin-bottom: 100px;
-        border-radius: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: -150px;
+    width: 165px;
+    height:100px;
+    margin-left: 20px;
+    margin-bottom: 100px;
+    border-radius: 25%;
     
-        @include screen-size(mobile-only) {
-           top: -260px;
-        }
-    
-        // width: 240px;
-    
-        // background-color: $color-main-white;
-        // border-radius: 15px;
-    
-        // @include screen-size(tablet) {
-        //     width: 600px;
-    
-        //     border-radius: 25px;
-        // }
-    
-        @include screen-size(desktop) {
-            // margin: -30px;
-    
-            // width: 600px;
-        }
+    @include screen-size(mobile-only) {
+        top: -260px;
+    }
 }
 
 .team-text {

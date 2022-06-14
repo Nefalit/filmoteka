@@ -1,4 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
+
 import lisaUrl from '../images/team/team-lisa.jpeg';
 import vovaUrl from '../images/team/team-vova.jpeg';
 import ilyaUrl from '../images/team/team-ilya.jpeg';
@@ -39,9 +40,7 @@ const markupTeam = `<div class="backdrop team-wrapper">
     <p class="team-members">Tarantiners</p>
 </div>`;
 
-
 const container = document.querySelector('.js-team-modal');
-// const basicLightbox = document.querySelector('.basicLightbox');
 
 container.addEventListener('click', openModal);
 
