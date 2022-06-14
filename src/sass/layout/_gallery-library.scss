@@ -1,11 +1,13 @@
 
 .container__gallery-lib {
+  min-height: calc(100vh - 230px - 90px);
   background-color: $color-container-bg;
   padding-top: 20px;
   padding-bottom: 40px;
 
   @include screen-size(tablet) {
     padding: 60px 0px;
+    min-height: calc(100vh - 294px);
   }
 
   @include screen-size(desktop) {
