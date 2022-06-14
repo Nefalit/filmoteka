@@ -1,13 +1,11 @@
-
 .container__gallery {
-  background-color: $color-logo;
+  background-color: $color-container-bg;
   padding-top: 20px;
   padding-bottom: 40px;
 
   @include screen-size(tablet) {
     padding: 60px 0px;
   }
-
 }
 .container__list {
   // padding-top: 20px;
@@ -33,6 +31,7 @@
 
 .container__card {
   display: flex;
+  cursor: pointer;
   flex-direction: column;
   transform: scale(1);
   transition: transform 300ms linear;

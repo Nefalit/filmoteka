@@ -30,23 +30,20 @@ export const getShortPopularity = Handlebars.registerHelper(
 export const getShortGenres = Handlebars.registerHelper(
   'getShortGenres',
   function (string) {
-    if (!string) {
-      return 'Невідомий жанр';
-    }
     const stringArr = string.split(', ');
     if (stringArr.length > 2) {
-      return [...stringArr.slice(0, 2), 'Other'].join(', ');
+      return [...stringArr.slice(0, 2), 'Інші...'].join(', ');
     }
     return stringArr.join(', ');
   }
 );
 
-export const getOverview = Handlebars.registerHelper(
-  'getOverview',
-  function (string) {
-    if (!string) {
-      return 'Інформація про фільм відсутня';
-    }
-    return string;
-  }
-);
+// export const getOverview = Handlebars.registerHelper(
+//   'getOverview',
+//   function (string) {
+//     if (!string) {
+//       return 'Інформація про фільм відсутня';
+//     }
+//     return string;
+//   }
+// );

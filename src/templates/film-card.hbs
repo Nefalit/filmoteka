@@ -14,15 +14,13 @@
       </div>
       <div class='container__information'>
         <p class='container__title'>{{title}}</p>
-        <div>
           {{#if genre_ids}}
-          <p class='container__text'>{{genre_ids}}
+          <p class='container__text'>{{getShortGenres genre_ids}}
           {{else}}
-          <p class='container__text'>Вибачте, немає інформації!
+          <p class='container__text'>Жанр невідомий
           {{/if}}
             |
             {{getYear release_date}}</p>
-        </div>
       </div>
   </li>
 {{/each}}
