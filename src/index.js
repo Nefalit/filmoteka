@@ -7,3 +7,4 @@ import {
   searchFormSubmitHandler,
 } from './js/header-home.js';
 import btn from './js/button-scroll-up.js';
+import team from './js/team-modal.js';
