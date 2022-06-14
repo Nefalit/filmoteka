@@ -1,19 +1,19 @@
 <header class="header-home">
-  <div class="container header-home__container">
+  <div class="container">
     <div class="navigation-wrapper">
       <a class="header__link" href="./index.html">
         <svg class="header__logo" width="24" height="24">
           <use href="./images/svg/films-svgs.svg#icon-film"></use>
         </svg>
-        <span class="header-home__title">Filmoteka</span>
+        <span class="header-home__title">Фільмотека</span>
       </a>
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item active">
-            <a class="nav__link" href="./index.html">Home</a>
+            <a class="nav__link" href="./index.html">На головну</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="./library.html">My library</a>
+            <a class="nav__link" href="./library.html">Моя бібліотека</a>
           </li>
         </ul>
       </nav>
@@ -23,16 +23,16 @@
         class="search__input js-search-input"
         type="text"
         name="searchQuery"
-        placeholder="Поиск фильмов"
+        placeholder="Пошук фільмів"
       />
       <button class="search__btn js-search-btn" type="submit">
-        <svg class="search__icon" width="12" height="12">
+        <svg class="search__icon" width="20" height="20">
           <use href="./images/svg/films-svgs.svg#icon-search"></use>
         </svg>
       </button>
+      <p class="search__warn js-search-warn is-hidden">
+        Пошук не дав результатів. Введіть коректну назву
     </form>
-    <p class="search__warn js-search-warn is-hidden">
-      Search result not successful. Enter the correct movie name
     </p>
   </div>
 </header>

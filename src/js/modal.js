@@ -1,11 +1,16 @@
 import Handlebars from 'handlebars';
 import { FilmsApi } from './api';
 import filmModal from '../templates/modal.hbs';
-import { getYear, getPosterUrl, getShortPopularity } from './handlebars.js';
+import {
+  getYear,
+  getPosterUrl,
+  getShortPopularity,
+  getShortGenres,
+} from './handlebars.js';
 import {
   CURRENT_PAGE_FILMS,
-  WATCHED_PAGE_FILMS,
   QUEUE_PAGE_FILMS,
+  WATCHED_PAGE_FILMS,
 } from './api-variables.js';
 import { save, load } from './local-storage';
 import Notiflix from 'notiflix';
@@ -50,11 +55,29 @@ export function filmCardClickHandler(ev) {
   btnQueueEl.addEventListener('click', saveToQueueStorage);
 
   function saveToWatchedStorage(ev) {
+    const queueArr = load(QUEUE_PAGE_FILMS);
+    if (queueArr) {
+      const requiredInd = queueArr.findIndex(el => el.id === requedFilm.id);
+      if (requiredInd !== -1) {
+        queueArr.splice(requiredInd, 1);
+        localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
+      }
+    }
     save(WATCHED_PAGE_FILMS, requedFilm);
   }
+
   function saveToQueueStorage() {
+    const watchedArr = load(WATCHED_PAGE_FILMS);
+    if (watchedArr) {
+      const requiredInd = watchedArr.findIndex(el => el.id === requedFilm.id);
+      if (requiredInd !== -1) {
+        watchedArr.splice(requiredInd, 1);
+        localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
+      }
+    }
     save(QUEUE_PAGE_FILMS, requedFilm);
   }
+
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
   document.addEventListener('keydown', filmCardCloseWindowByEsc);
 
