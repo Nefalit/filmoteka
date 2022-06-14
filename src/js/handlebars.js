@@ -38,12 +38,3 @@ export const getShortGenres = Handlebars.registerHelper(
   }
 );
 
-// export const getOverview = Handlebars.registerHelper(
-//   'getOverview',
-//   function (string) {
-//     if (!string) {
-//       return 'Інформація про фільм відсутня';
-//     }
-//     return string;
-//   }
-// );

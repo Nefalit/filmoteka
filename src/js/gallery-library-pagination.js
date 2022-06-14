@@ -7,59 +7,100 @@ import { WATCHED_PAGE_FILMS, QUEUE_PAGE_FILMS } from './api-variables.js';
 const galleryList = document.querySelector('.gallery-library__list');
 const watchedBtn = document.querySelector('.js-btn-watched');
 const queuedBtn = document.querySelector('.js-btn-queue');
+const paginationBox = document.querySelector('#pagination');
 
-const watchedItemsArr = load(WATCHED_PAGE_FILMS);
-const queueItemsArr = load(QUEUE_PAGE_FILMS);
-const watchedTotalItems = watchedItemsArr?.length || 0;
-const queueTotalItems = queueItemsArr?.length || 0;
 const showPerPage = 20;
-let selectedList = '';
-
-export const pagination = new Pagination('pagination', {
-  totalItems: queueTotalItems,
-  itemsPerPage: showPerPage,
-  visiblePages: 5,
-  centerAlign: true,
-  page: 1,
-});
+export let selectedList = 'queue';
 
 export function renderGallery(arr) {
   galleryList.innerHTML = '';
   galleryList.insertAdjacentHTML('beforeend', libraryFilmCard(arr));
 }
 
-const filtereQueuedArr =
-  queueItemsArr?.filter((item, idx) => idx < showPerPage) || [];
-renderGallery(filtereQueuedArr);
+watchedBtn.addEventListener('click', getDataWatched);
 
-const filteredwatchedArr =
-  watchedItemsArr?.filter((item, idx) => idx < showPerPage) || [];
+let currentPageWatched = 1;
+export let firstIdxWatched = 0;
+let lastIdxWatched = 20;
+export function getDataWatched() {
+  paginationBox.classList.add('visually-hidden');
+  const watchedArr1 = load(WATCHED_PAGE_FILMS);
+  renderGallery(watchedArr1.slice(firstIdxWatched, lastIdxWatched));
 
-watchedBtn.addEventListener('click', event => {
-  if (selectedList === 'watched') return;
-  pagination.setTotalItems(watchedTotalItems);
-  pagination.movePageTo(1);
+  if (watchedArr1 && watchedArr1.length > 20) {
+    paginationBox.classList.remove('visually-hidden');
+
+    const pagination = new Pagination('pagination', {
+      totalItems: watchedArr1.length,
+      itemsPerPage: showPerPage,
+      visiblePages: 5,
+      centerAlign: true,
+    });
+
+    pagination.movePageTo(currentPageWatched);
+
+    pagination.on('afterMove', event => {
+      const watchedArr1 = load(WATCHED_PAGE_FILMS);
+      currentPageWatched = event.page;
+      firstIdxWatched = (currentPageWatched - 1) * showPerPage;
+      lastIdxWatched = firstIdxWatched + showPerPage;
+
+      renderGallery(watchedArr1.slice(firstIdxWatched, lastIdxWatched));
+    });
+  } else {
+    renderGallery(watchedArr1);
+    firstIdxWatched = 0;
+    currentPageWatched = 1;
+    lastIdxWatched = 20;
+  }
+  watchedBtn.classList.add('btn--active');
+  watchedBtn.classList.remove('btn--bright');
+  queuedBtn.classList.add('btn--bright');
+  queuedBtn.classList.remove('btn--active');
   selectedList = 'watched';
-  renderGallery(filteredwatchedArr);
-});
+}
 
-queuedBtn.addEventListener('click', event => {
-  if (selectedList === 'queue') return;
+queuedBtn.addEventListener('click', getDataQueue);
 
-  pagination.setTotalItems(queueTotalItems);
-  pagination.movePageTo(1);
+let currentPageQueue = 1;
+export let firstIdxQueue = 0;
+let lastIdxQueue = 20;
+export function getDataQueue() {
+  paginationBox.classList.add('visually-hidden');
+
+  const queueArr1 = load(QUEUE_PAGE_FILMS);
+  renderGallery(queueArr1.slice(firstIdxQueue, lastIdxQueue));
+
+  if (queueArr1 && queueArr1.length > 20) {
+    paginationBox.classList.remove('visually-hidden');
+
+    const pagination = new Pagination('pagination', {
+      totalItems: queueArr1.length,
+      itemsPerPage: showPerPage,
+      visiblePages: 5,
+      centerAlign: true,
+    });
+
+    pagination.movePageTo(currentPageQueue);
+
+    pagination.on('afterMove', event => {
+      const queueArr1 = load(QUEUE_PAGE_FILMS);
+      currentPageQueue = event.page;
+      firstIdxQueue = (currentPageQueue - 1) * showPerPage;
+      lastIdxQueue = firstIdxQueue + showPerPage;
+
+      renderGallery(queueArr1.slice(firstIdxQueue, lastIdxQueue));
+    });
+  } else {
+    renderGallery(queueArr1);
+    firstIdxQueue = 0;
+    currentPageQueue = 1;
+    lastIdxQueue = 20;
+  }
+
+  queuedBtn.classList.add('btn--active');
+  queuedBtn.classList.remove('btn--bright');
+  watchedBtn.classList.add('btn--bright');
+  watchedBtn.classList.remove('btn--active');
   selectedList = 'queue';
-  renderGallery(filtereQueuedArr);
-});
-
-pagination.on('afterMove', event => {
-  const currentPage = event.page;
-  const firstIdx = (currentPage - 1) * showPerPage;
-  const lastIdx = firstIdx + showPerPage;
-  const arrToRender =
-    selectedList === 'watched' ? watchedItemsArr : queueItemsArr;
-
-  if (!arrToRender) return;
-
-  renderGallery(arrToRender.slice(firstIdx, lastIdx));
-});
+}

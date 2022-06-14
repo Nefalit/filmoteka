@@ -1,15 +1,4 @@
-// .gallery-library {
-//   padding-top: 20px;
-//   padding-bottom: 40px;
-//   @include screen-size(tablet) {
-//     padding-top: 60px;
-//     padding-bottom: 60px;
-//   }
 
-//   @include screen-size(desktop) {
-//     padding-top: 32px;
-//   }
-// }
 .container__gallery-lib {
   min-height: calc(100vh - 230px - 90px);
   background-color: $color-container-bg;
