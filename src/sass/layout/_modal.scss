@@ -29,7 +29,7 @@ td {
   height: auto;
   border-radius: 5px;
   @include screen-size(mobile-only) {
-  top: 20px;
+    top: 20px;
   }
 
   @include screen-size(tablet) {
@@ -52,10 +52,8 @@ td {
 
 .modal__button-close-modal {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 14px;
-  height: 14px;
+  top: 8px;
+  right: 8px;
   padding: 0px;
   border: 0px;
   background: none;
