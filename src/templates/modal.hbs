@@ -1,51 +1,66 @@
 <img
   class='modal__poster'
-  src='{{getPosterUrl poster_path}}'
-  alt='{{title:}}'
+    {{#if poster_path}}
+    src='{{getPosterUrl poster_path}}'
+    {{else}}
+    src='https://papik.pro/uploads/posts/2021-12/thumbs/1639228118_1-papik-pro-p-kino-klipart-1.jpg'
+    {{/if}}
+
+  alt={{title}}
 />
 <table class='modal__table'>
   <th class='modal__title' colspan='2'>{{title}}</th>
   <tr>
-    <td class='modal__item modal__item-votes'>Vote/Votes</td>
+    <td class='modal__item modal__item-votes'>Голос/Голоси</td>
     <td class='modal__item-value modal__item-value-votes'><span
         class='modall__span-vote'
       >{{vote_average}}</span>
       /
-      {{getYear release_date}}</td>
+      {{vote_count}}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-popularity'>Popularity</td>
+    <td class='modal__item modal__item-popularity'>Популярність</td>
     <td
       class='modal__item-value modal__item-value-popularity'
     >{{getShortPopularity popularity}}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-orig-title'>Origrnal Title</td>
+    <td class='modal__item modal__item-orig-title'>Оригінальна назва</td>
     <td
       class='modal__item-value modal__item-value-orig-title'
     >{{original_title}}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-genre'>Genre</td>
+    <td class='modal__item modal__item-genre'>Жанр</td>
+    {{#if genre_ids}}
     <td class='modal__item-value modal__item-value-genre'>{{genre_ids}}</td>
+    {{else}}
+    <td class='modal__item-value modal__item-value-genre'>Жанр невідомий</td>
+    {{/if}}
   </tr>
   <tr>
-    <td class='modal__item modal__item-about' colspan='2'>About</td>
+    <td class='modal__item modal__item-about' colspan='2'>Про фільм</td>
   </tr>
+    {{#if overview}}
   <td
     class='modal__item-value modal__item-value-about'
     colspan='2'
   >{{overview}}</td>
-
+  {{else}}
+      <td
+    class='modal__item-value modal__item-value-about'
+    colspan='2'
+  >Вибачте, немає інформації</td>
+  {{/if}}
   <tr class='modal__buttons'>
     <td>
       <button class='modal__button modal__button-watched' type='button'>
-        ADD TO WATCHED
+        ДОДАТИ ДО ПЕРЕГЛЯНУТИХ
       </button>
     </td>
     <td>
       <button class='modal__button modal__button-queue' type='button'>
-        ADD TO QUEUE
+        ДОДАТИ ДО ЧЕРГИ
       </button>
     </td>
   </tr>

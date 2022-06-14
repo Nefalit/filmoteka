@@ -7,8 +7,18 @@ body {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  background-image: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url("../images/body/bg_img_2.jpeg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../images/body/bg_img_2.jpeg');
+}
 
+::-webkit-scrollbar {
+  width: 10px;
+  background: $color-gradient-headers;
+  // color: $color-accent;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-accent;
+  border-radius: 10px;
 }
 
 a {
@@ -58,4 +68,3 @@ button {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-

@@ -11,7 +11,7 @@
 //   }
 // }
 .container__gallery-lib {
-  background-color: $color-main-white;
+  background-color: $color-container-bg;
   padding-top: 20px;
   padding-bottom: 40px;
 
@@ -47,6 +47,7 @@
 .gallery-library__card {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   transform: scale(1);
   transition: transform 300ms linear;
 }
@@ -89,11 +90,12 @@
 }
 
 .gallery-library__genre {
-  max-width: 120px;
+  // max-width: 120px;
 
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
+  margin-right: 8px;
 }
 
 .gallery-library__year {
