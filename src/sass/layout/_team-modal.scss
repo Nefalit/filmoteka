@@ -14,7 +14,7 @@
     transform: translate(-50%, -50%);
     display: flex;
     flex-wrap: wrap;
-    width: 800px;
+    // width: 800px;
     height: auto;
     // margin: -20px;
 
@@ -42,7 +42,7 @@
     }
 
     @include screen-size(desktop) {
-        margin: -30px;
+        // margin: -30px;
         height: 486px;
         width: 700px;
     }
@@ -169,10 +169,6 @@ text-align: center;
         margin-bottom: 100px;
         border-radius: 25%;
     
-        // background-image: url(../images/team/tarantino.jpeg);
-        // background-repeat: no-repeat;
-        // background-size: cover;
-    
         @include screen-size(mobile-only) {
            top: -260px;
         }
@@ -189,7 +185,7 @@ text-align: center;
         // }
     
         @include screen-size(desktop) {
-            margin: -30px;
+            // margin: -30px;
     
             // width: 600px;
         }
