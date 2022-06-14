@@ -8,37 +8,40 @@ import lenaUrl from '../images/team/team-lena.jpeg';
 
 const markupTeam = `<div class="backdrop team-wrapper">
 
-<div class="team-card">
+<div class="team-card team-card-vova">
+    <img src="${vovaUrl}" alt="Владимир Кузик" class="team-image">
+    <p class="team-name">Владимир Кузик</p>
+</div>
+
+<div class="team-card team-card-ilya">
+    <img src="${ilyaUrl}" alt="Илья Корж" class="team-image">
+    <p class="team-name">Илья Корж</p>
+</div>
+
+<div class="team-card team-card-lisa">
     <img src="${lisaUrl}" alt="Елизавета Чернышева" class="team-image">
     <p class="team-name">Елизавета Чернышева</p>
 </div>
+
+<div class="team-card team-card-lena">
+    <img src="${lenaUrl}" alt="Елена Сердюк" class="team-image">
+    <p class="team-name">Елена Сердюк</p>
+</div>
+<div class="team-card team-card-roma">
+    <img src="${romaUrl}" alt="Роман Лизун" class="team-image">
+    <p class="team-name">Роман Лизун</p>
+</div>
+</div>
+
 <div class="team-container">
     <p class="team-text">bc_17 Online</p>
     <p class="team-text">GoiT</p>
     <p class="team-members">Tarantiners</p>
-</div>
-
-<div class="team-card">
-    <img src="${vovaUrl}" alt="Владимир Кузик" class="team-image">
-    <p class="team-name">Владимир Кузик</p>
-</div>
-<div class="team-card">
-    <img src="${ilyaUrl}" alt="Илья Корж" class="team-image">
-    <p class="team-name">Илья Корж</p>
-</div>
-<div class="team-card">
-    <img src="${lenaUrl}" alt="Елена Сердюк" class="team-image">
-    <p class="team-name">Елена Сердюк</p>
-</div>
-<div class="team-card">
-    <img src="${romaUrl}" alt="Роман Лизун" class="team-image">
-    <p class="team-name">Роман Лизун</p>
-</div>
 </div>`;
 
 
 const container = document.querySelector('.js-team-modal');
-const backdrop = document.querySelector('.backdrop');
+// const basicLightbox = document.querySelector('.basicLightbox');
 
 container.addEventListener('click', openModal);
 
@@ -49,14 +52,13 @@ function openModal(e) {
 
   window.addEventListener('keydown', closeModalHandler);
 
+
   function closeModalHandler(e) {
-    if (e.code === 'Escape') {
+    if (e.code === 'Escape' && modal.visible()) {
       modal.close();
       window.removeEventListener('keydown', closeModalHandler);
     }
-      if (!modal) {
-    modal.close();
-    window.removeEventListener('keydown', closeModalHandler);
-    }
   }
 }
+
+  
