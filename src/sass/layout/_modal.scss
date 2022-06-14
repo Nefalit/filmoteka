@@ -28,7 +28,9 @@ td {
   width: 280px;
   height: auto;
   border-radius: 5px;
-
+  @include screen-size(mobile-only) {
+  top: 20px;
+  }
 
   @include screen-size(tablet) {
     position: absolute;
@@ -204,7 +206,6 @@ td {
   background-color: $color-rating;
   color: $color-main-white;
   transition: background-color $animation;
-
 }
 
 .modal__button-watched {

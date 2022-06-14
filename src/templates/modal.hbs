@@ -6,7 +6,7 @@
     src='https://papik.pro/uploads/posts/2021-12/thumbs/1639228118_1-papik-pro-p-kino-klipart-1.jpg'
     {{/if}}
 
-  alt='qwertty'
+  alt={{title}}
 />
 <table class='modal__table'>
   <th class='modal__title' colspan='2'>{{title}}</th>
@@ -16,7 +16,7 @@
         class='modall__span-vote'
       >{{vote_average}}</span>
       /
-      {{getYear release_date}}</td>
+      {{vote_count}}</td>
   </tr>
   <tr>
     <td class='modal__item modal__item-popularity'>Популярність</td>
@@ -31,11 +31,11 @@
     >{{original_title}}</td>
   </tr>
   <tr>
-    <td class='modal__item modal__item-genre'>Genre</td>
+    <td class='modal__item modal__item-genre'>Жанр</td>
     {{#if genre_ids}}
-    <td class='modal__item-value modal__item-value-genre'>{{getShortGenres genre_ids}}</td>
+    <td class='modal__item-value modal__item-value-genre'>{{genre_ids}}</td>
     {{else}}
-    <td class='modal__item-value modal__item-value-genre'>Вибачте, немає інформації!</td>
+    <td class='modal__item-value modal__item-value-genre'>Жанр невідомий</td>
     {{/if}}
   </tr>
   <tr>
@@ -50,7 +50,7 @@
       <td
     class='modal__item-value modal__item-value-about'
     colspan='2'
-  >Вибачте, немає інформації!</td>
+  >Вибачте, немає інформації</td>
   {{/if}}
   <tr class='modal__buttons'>
     <td>

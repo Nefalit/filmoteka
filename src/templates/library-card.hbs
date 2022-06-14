@@ -13,9 +13,9 @@
       <p class='gallery-library__name'>{{title}}</p>
       <div class='gallery-library__info'>
         {{#if genre_ids}}
-        <span class='gallery-library__genre'>{{genre_ids}}
+        <span class='gallery-library__genre'>{{getShortGenres genre_ids}}
         {{else}}
-        <span class='gallery-library__genre'>Вибачте, немає інформації!
+        <span class='gallery-library__genre'>Жанр невідомий
         {{/if}}
             |
             {{getYear release_date}}</span>

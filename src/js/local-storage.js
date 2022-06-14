@@ -11,18 +11,18 @@ const save = (key, value) => {
         elem => elem.id === value.id
       );
       if (requiredIndx !== -1) {
-        throw new Error('Sorry this film is added!');
+        throw new Error('Цей фільм вже додано');
       }
       const updatedStorage = JSON.stringify([value, ...parsedCurrentStorage]);
       localStorage.setItem(key, updatedStorage);
-      Notiflix.Notify.success('Success: The film added to watched', {
+      Notiflix.Notify.success('Фільм успішно додано', {
         timeout: 1000,
       });
       return;
     }
     const film = JSON.stringify([value]);
     localStorage.setItem(key, film);
-    Notiflix.Notify.success('Success: The film added to watched', {
+    Notiflix.Notify.success('Фільм успішно додано', {
       timeout: 1000,
     });
   } catch (error) {
@@ -37,7 +37,7 @@ const load = key => {
     const filmsArr = localStorage.getItem(key);
     return filmsArr === null ? undefined : JSON.parse(filmsArr);
   } catch (error) {
-    Notiflix.Notify.failure(`Error to loading`, {
+    Notiflix.Notify.failure(`Помилка завантаження`, {
       timeout: 1000,
     });
   }
