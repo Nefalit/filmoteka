@@ -3,7 +3,11 @@
       <div class='container__image-wrapper'>
         <img
           class='container__image'
-          src={{getPosterUrl poster_path}}
+          {{#if poster_path}}
+          src='{{getPosterUrl poster_path}}'
+          {{else}}
+          src='https://papik.pro/uploads/posts/2021-12/thumbs/1639228118_1-papik-pro-p-kino-klipart-1.jpg'
+          {{/if}}
           alt={{title}}
           loading='lazy'
         />
@@ -11,7 +15,11 @@
       <div class='container__information'>
         <p class='container__title'>{{title}}</p>
         <div>
+          {{#if genre_ids}}
           <p class='container__text'>{{genre_ids}}
+          {{else}}
+          <p class='container__text'>Вибачте, немає інформації!
+          {{/if}}
             |
             {{getYear release_date}}</p>
         </div>

@@ -17,6 +17,7 @@ const btnCloseModal = document.querySelector('.modal__button-close-modal');
 galleryListEl.addEventListener('click', filmCardClickHandler);
 
 export function filmCardClickHandler(ev) {
+  document.body.style.overflow = 'hidden';
   if (ev.target.parentNode.parentNode.className !== 'container__card') {
     return;
   }
@@ -43,7 +44,6 @@ export function filmCardClickHandler(ev) {
     }
   }
 
-  
   const btnWatchedEl = document.querySelector('.modal__button-watched');
   const btnQueueEl = document.querySelector('.modal__button-queue');
   btnWatchedEl.addEventListener('click', saveToWatchedStorage);
@@ -72,5 +72,6 @@ export function filmCardClickHandler(ev) {
     btnQueueEl.removeEventListener('click', saveToQueueStorage);
     document.removeEventListener('keydown', filmCardCloseWindowByEsc);
     backdrop.removeEventListener('click', backdropCloseModal);
+    document.body.style.overflow = 'auto';
   }
 }
