@@ -8,6 +8,7 @@ const galleryList = document.querySelector('.gallery-library__list');
 const watchedBtn = document.querySelector('.js-btn-watched');
 const queuedBtn = document.querySelector('.js-btn-queue');
 const paginationBox = document.querySelector('#pagination');
+const libWarnText = document.querySelector('.lib__empty');
 
 const showPerPage = 20;
 export let selectedList = 'queue';
@@ -23,8 +24,20 @@ let currentPageWatched = 1;
 export let firstIdxWatched = 0;
 let lastIdxWatched = 20;
 export function getDataWatched() {
+  watchedBtn.classList.add('btn--active');
+  watchedBtn.classList.remove('btn--bright');
+  queuedBtn.classList.add('btn--bright');
+  queuedBtn.classList.remove('btn--active');
+  selectedList = 'watched';
   paginationBox.classList.add('visually-hidden');
+  libWarnText.classList.add('visually-hidden');
+
   const watchedArr1 = load(WATCHED_PAGE_FILMS);
+  if (watchedArr1 === undefined || !watchedArr1.length) {
+    galleryList.innerHTML = '';
+    libWarnText.classList.remove('visually-hidden');
+    return;
+  }
   renderGallery(watchedArr1.slice(firstIdxWatched, lastIdxWatched));
 
   if (watchedArr1 && watchedArr1.length > 20) {
@@ -53,11 +66,6 @@ export function getDataWatched() {
     currentPageWatched = 1;
     lastIdxWatched = 20;
   }
-  watchedBtn.classList.add('btn--active');
-  watchedBtn.classList.remove('btn--bright');
-  queuedBtn.classList.add('btn--bright');
-  queuedBtn.classList.remove('btn--active');
-  selectedList = 'watched';
 }
 
 queuedBtn.addEventListener('click', getDataQueue);
@@ -66,9 +74,20 @@ let currentPageQueue = 1;
 export let firstIdxQueue = 0;
 let lastIdxQueue = 20;
 export function getDataQueue() {
+  queuedBtn.classList.add('btn--active');
+  queuedBtn.classList.remove('btn--bright');
+  watchedBtn.classList.add('btn--bright');
+  watchedBtn.classList.remove('btn--active');
+  selectedList = 'queue';
   paginationBox.classList.add('visually-hidden');
+  libWarnText.classList.add('visually-hidden');
 
   const queueArr1 = load(QUEUE_PAGE_FILMS);
+  if (queueArr1 === undefined || !queueArr1.length) {
+    galleryList.innerHTML = '';
+    libWarnText.classList.remove('visually-hidden');
+    return;
+  }
   renderGallery(queueArr1.slice(firstIdxQueue, lastIdxQueue));
 
   if (queueArr1 && queueArr1.length > 20) {
@@ -97,10 +116,4 @@ export function getDataQueue() {
     currentPageQueue = 1;
     lastIdxQueue = 20;
   }
-
-  queuedBtn.classList.add('btn--active');
-  queuedBtn.classList.remove('btn--bright');
-  watchedBtn.classList.add('btn--bright');
-  watchedBtn.classList.remove('btn--active');
-  selectedList = 'queue';
 }
