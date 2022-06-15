@@ -1,11 +1,6 @@
 import filmCard from '../templates/film-card.hbs';
 import { getYear, getPosterUrl } from './handlebars.js';
-import {
-  filmsApi,
-  galleryEl,
-  container,
-  paginationGeneralOptions,
-} from './gallery-home';
+import { filmsApi, galleryEl, paginationGeneralOptions } from './gallery-home';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { load } from './local-storage';
@@ -16,6 +11,7 @@ export const searchForm = document.querySelector('.js-search-form');
 export const searchInput = document.querySelector('.js-search-input');
 export const searchBtn = document.querySelector('.js-search-btn');
 export const searchWarn = document.querySelector('.js-search-warn');
+const container = document.querySelector('#pagination');
 
 searchWarn.classList.add('is-hidden');
 searchBtn.classList.remove('is-hidden');
@@ -35,7 +31,8 @@ async function getQueryPage(query) {
       searchWarn.classList.add('is-hidden');
       const markupSearchpage = filmCard(result);
       localStorage.setItem(CURRENT_PAGE_FILMS, JSON.stringify(result));
-
+      galleryEl.innerHTML = markupSearchpage;
+      container.classList.add('visually-hidden');
       const { total_results: totalSearchedMovies, page: currentLoadedPage } =
         load('fullResponseData');
 
@@ -44,16 +41,21 @@ async function getQueryPage(query) {
         page: currentLoadedPage,
         ...paginationGeneralOptions,
       };
-
-      const paginationOfMainPage = new Pagination(container, paginationOptions);
-      paginationOfMainPage.on('afterMove', event => {
-        const currentPage = event.page;
-        const currentQuery = searchInput.value;
-        filmsApi.page = currentPage;
-        getQueryPage(currentQuery);
-      });
-      galleryEl.innerHTML = markupSearchpage;
+      if (totalSearchedMovies > 20) {
+        const paginationOfMainPage = new Pagination(
+          container,
+          paginationOptions
+        );
+        paginationOfMainPage.on('afterMove', event => {
+          const currentPage = event.page;
+          const currentQuery = searchInput.value;
+          filmsApi.page = currentPage;
+          getQueryPage(currentQuery);
+        });
+        container.classList.remove('visually-hidden');
+      }
     })
+
     .catch(err => console.log(err));
 }
 
