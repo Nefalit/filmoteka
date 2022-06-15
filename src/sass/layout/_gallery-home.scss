@@ -81,6 +81,14 @@
 
 // Pagination
 
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+    color: $color-main-white;
+    background: $color-accent;
+    border-color: none;
+    cursor: pointer;
+}
+
 .tui-pagination .tui-page-btn{
   width: 40px;
   height: 40px;
@@ -91,7 +99,7 @@
     margin-bottom: 10px;
   }
 }
-.tui-page-btn {
+.tui-pagination .tui-page-btn {
   color: $color-main-text;
   background: $color-main-white;
   cursor: default;
@@ -148,4 +156,22 @@ background-color: $color-main-white;
   @include screen-size(tablet) {
     margin-right: 10px;
   }
+}
+
+.tui-first-child,
+.tui-prev-is-ellip {
+  border-left: none;
+}
+
+.tui-last-child,
+.tui-next-is-ellip {
+  border-right: none;
+}
+
+.tui-first-child.tui-is-selected {
+  border-left: none;
+}
+
+.tui-last-child.tui-is-selected {
+  border-right: none;
 }
