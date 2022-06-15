@@ -61,7 +61,7 @@ function libCardClickHandler(event) {
     localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
 
     save(WATCHED_PAGE_FILMS, currentFilm);
-    firstIdxQueue = 0;
+//     firstIdxQueue = 0;
   }
 
   function saveToLibQueueStorage() {
@@ -71,7 +71,7 @@ function libCardClickHandler(event) {
     localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
 
     save(QUEUE_PAGE_FILMS, currentFilm);
-    firstIdxWatched = 0;
+//     firstIdxWatched = 0;
   }
 
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
