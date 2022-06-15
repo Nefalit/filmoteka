@@ -24,6 +24,11 @@ let currentPageWatched = 1;
 export let firstIdxWatched = 0;
 let lastIdxWatched = 20;
 export function getDataWatched() {
+  watchedBtn.classList.add('btn--active');
+  watchedBtn.classList.remove('btn--bright');
+  queuedBtn.classList.add('btn--bright');
+  queuedBtn.classList.remove('btn--active');
+  selectedList = 'watched';
   paginationBox.classList.add('visually-hidden');
   libWarnText.classList.add('visually-hidden');
 
@@ -61,11 +66,6 @@ export function getDataWatched() {
     currentPageWatched = 1;
     lastIdxWatched = 20;
   }
-  watchedBtn.classList.add('btn--active');
-  watchedBtn.classList.remove('btn--bright');
-  queuedBtn.classList.add('btn--bright');
-  queuedBtn.classList.remove('btn--active');
-  selectedList = 'watched';
 }
 
 queuedBtn.addEventListener('click', getDataQueue);
@@ -74,6 +74,11 @@ let currentPageQueue = 1;
 export let firstIdxQueue = 0;
 let lastIdxQueue = 20;
 export function getDataQueue() {
+  queuedBtn.classList.add('btn--active');
+  queuedBtn.classList.remove('btn--bright');
+  watchedBtn.classList.add('btn--bright');
+  watchedBtn.classList.remove('btn--active');
+  selectedList = 'queue';
   paginationBox.classList.add('visually-hidden');
   libWarnText.classList.add('visually-hidden');
 
@@ -111,10 +116,4 @@ export function getDataQueue() {
     currentPageQueue = 1;
     lastIdxQueue = 20;
   }
-
-  queuedBtn.classList.add('btn--active');
-  queuedBtn.classList.remove('btn--bright');
-  watchedBtn.classList.add('btn--bright');
-  watchedBtn.classList.remove('btn--active');
-  selectedList = 'queue';
 }
