@@ -1,0 +1,200 @@
+// Pagination
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+    width: 40px !important;
+    height: 40px !important;
+    color: $color-main-white  !important;
+    background-color: $color-accent  !important;
+    border-color: transparent !important;
+    cursor: pointer !important;
+}
+
+.tui-pagination .tui-page-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border: transparent !important;
+    line-height: 2 !important;
+
+    @include screen-size(tablet) {
+        color: $color-main-text !important;
+        background: transparent !important;
+
+
+        border-radius: 5px !important;
+        margin-right: 5px !important;
+    }
+
+    @include screen-size(mobile-only) {
+        // display: block !important;
+        color: $color-main-text !important;
+        background: transparent !important;
+        margin-right: 0px !important;
+        margin-bottom: 5px !important;
+        border-radius: 5px !important;
+        cursor: pointer !important;
+    }
+}
+
+.tui-pagination .tui-first-child .tui-is-selected {
+    background-color: $color-accent !important;
+    cursor: pointer !important;
+}
+
+.tui-pagination .tui-is-selected {
+    background-color: $color-accent  !important;
+    color: $color-main-white  !important;
+}
+
+.tui-first-child {
+    background-color: $color-main-white !important;
+}
+
+.tui-pagination .tui-page-btn:hover {
+    background-color: $color-accent !important;
+    transition: $animation !important;
+}
+
+.tui-pagination .tui-prev-is-ellip:hover,
+.tui-pagination .tui-next-is-ellip:hover {
+    background-color: $color-accent !important;
+}
+
+.tui-pagination .tui-prev {
+    line-height: 2 !important;
+
+    @include screen-size(mobile-only) {
+        margin-bottom: 3px !important;
+
+    }
+
+    @include screen-size(tablet) {
+        margin-right: 10px !important;
+    }
+}
+
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+    @include screen-size(mobile-only) {
+        display: none !important;
+    }
+
+    @include screen-size(tablet) {
+        margin-right: 10px !important;
+    }
+}
+
+.tui-first-child,
+.tui-prev-is-ellip {
+    border-left: none !important;
+}
+
+.tui-last-child,
+.tui-next-is-ellip {
+    border-right: none !important;
+}
+
+.tui-first-child.tui-is-selected {
+    border-left: none !important;
+}
+
+.tui-last-child.tui-is-selected {
+    border-right: none !important;
+}
+
+.tui-first {
+   @include screen-size(mobile-only) {
+        display: none !important;
+    }
+    padding-top: 3px !important;
+}
+
+.tui-pagination .tui-prev {
+    padding-top: 3px !important;
+    margin-right: 10px !important;
+    @include screen-size(mobile-only) {
+        margin-right: 0px !important;
+    }
+}
+
+.tui-pagination .tui-next {
+    line-height: 2 !important;
+    display: inline-block;
+    margin-left: 5px !important;
+    padding-top: 3px !important;
+   @include screen-size(mobile-only) {
+        margin-left: 0 !important;
+    }
+}
+
+.tui-last {
+    padding-top: 3px !important;
+
+   @include screen-size(mobile-only) {
+        display: none !important;
+    }
+}
+
+.tui-pagination .tui-ico-first {
+
+    margin-top: 12px !important;
+    width: 11px;
+    height: 10px;
+    background-position: 0px 0px
+}
+
+.tui-pagination .tui-ico-prev {
+    margin-top: 12px !important;
+    width: 6px;
+    height: 10px;
+    background-position: -26px 0px
+}
+
+.tui-pagination .tui-ico-next {
+    margin-top: 12px !important;
+    width: 6px;
+    height: 10px;
+    background-position: -13px -24px
+}
+
+.tui-pagination .tui-ico-last {
+    margin-top: 12px !important;
+    width: 11px;
+    height: 10px;
+    background-position: 0px -12px
+}
+
+.tui-pagination .tui-ico-ellip {
+    width: 10px;
+    height: 2px;
+    margin-top: 18px !important;
+
+    vertical-align: top;
+    background-position: 0px -24px
+}
+
+.tui-pagination .tui-is-disabled:hover {
+    background: #fff;
+    cursor: default
+}
+
+.tui-pagination .tui-first-child,
+.tui-pagination .tui-prev-is-ellip {
+    border-left: none !important;
+}
+
+.tui-pagination .tui-last-child,
+.tui-pagination .tui-next-is-ellip {
+    border-right: none !important;
+}
+
+
+.tui-pagination .tui-first-child.tui-is-selected {
+    border-left: none !important;
+    background-color: $color-accent  !important;
+}
+
+.tui-pagination .tui-last-child.tui-is-selected {
+    border-right: none !important;
+    background-color: $color-accent  !important;
+}
