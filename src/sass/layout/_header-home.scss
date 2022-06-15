@@ -1,0 +1,209 @@
+.header-home {
+  padding: 40px 0 92px;
+  background-image: linear-gradient(
+      to top,
+      $color-gradient-headers,
+      $color-gradient-headers
+    ),
+    url('../images/home/mobile/header-bg-mobile.jpg');
+
+  @include screen-size(retina) {
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/home/mobile/header-bg-mobile@2x.jpg');
+  }
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include screen-size(tablet) {
+    padding-bottom: 80px;
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/home/tablet/header-bg-tablet.jpg');
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/home/tablet/header-bg-tablet@2x.jpg');
+    }
+  }
+
+  @include screen-size(desktop) {
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/home/desktop/header-bg-desktop.jpg');
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/home/desktop/header-bg-desktop@2x.jpg');
+    }
+  }
+}
+
+.navigation-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 54px;
+
+  @include screen-size(tablet) {
+    margin-bottom: 40px;
+  }
+
+  @include screen-size(desktop) {
+    margin-bottom: 41px;
+  }
+}
+
+.header__link {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  stroke: $color-logo;
+  fill: transparent;
+}
+
+.header-home__title {
+  display: none;
+  color: $color-main-white;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  margin-left: 8px;
+
+  @include screen-size(tablet) {
+    display: inline-block;
+  }
+
+  @include screen-size(tablet) {
+    margin-left: 10px;
+  }
+}
+
+.nav {
+  margin-left: auto;
+}
+.nav-list {
+  display: flex;
+}
+
+.nav__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 39px;
+
+  @include screen-size(tablet-only) {
+    margin-right: 40px;
+  }
+}
+
+.nav__item.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: $color-accent;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__link {
+  text-transform: uppercase;
+  color: $color-main-white;
+}
+
+.search__form {
+  position: relative;
+  margin: 0 auto;
+
+  @include screen-size(tablet) {
+    // margin: 0 auto 20px;
+    max-width: 336px;
+  }
+}
+
+.search__input {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $color-main-white;
+  transition: border $animation;
+  background-color: transparent;
+  color: $color-main-white;
+}
+
+.search__input:focus {
+  border-bottom: 1px solid $color-fields-names;
+}
+
+.search__input::placeholder {
+  color: $color-main-white;
+}
+
+.search__btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: transparent;
+  transform: scale(1);
+  transition: transform $animation;
+}
+
+.search__btn.is-hidden {
+  transform: scale(0);
+}
+
+.search__warn {
+  position: absolute;
+  bottom: -48px;
+  left: 0;
+  display: block;
+  max-width: 280px;
+  font-family: $primary-font;
+  font-size: 14px;
+  font-weight: 400;
+  color: $color-warn-text;
+  transform: scalex(1);
+  transform-origin: center;
+  transition: transform $animation;
+
+  @include screen-size(tablet) {
+    bottom: -34px;
+    min-width: 700px;
+  }
+}
+
+.search__warn.is-hidden {
+  transform: scalex(0);
+}

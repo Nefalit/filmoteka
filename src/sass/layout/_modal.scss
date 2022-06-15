@@ -1,0 +1,220 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-gradient-headers;
+  overflow-y: scroll;
+}
+
+table,
+tbody,
+th,
+tr,
+td {
+  padding: 0px;
+  margin: 0px;
+}
+
+.modal__window {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: #ffffff;
+  text-align: end;
+  padding: 48px 20px 40px;
+  width: 280px;
+  height: auto;
+  border-radius: 5px;
+  @include screen-size(mobile-only) {
+    top: 20px;
+  }
+
+  @include screen-size(tablet) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 704px;
+    padding: 40px 72px 40px 36px;
+  }
+
+  @include screen-size(desktop) {
+    width: 814px;
+    padding: 40px 16px;
+  }
+}
+
+.modal__button-close-modal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0px;
+  border: 0px;
+  background: none;
+}
+.modal__icon {
+  stroke: $color-main-text;
+}
+
+.modal__info-film {
+  @include screen-size(tablet) {
+    display: flex;
+  }
+}
+
+.modal__poster {
+  display: block;
+  border-radius: 5px;
+
+  @include screen-size(mobile) {
+    width: 240px;
+    height: 357px;
+
+    margin-bottom: 20px;
+  }
+  @include screen-size(tablet) {
+    width: 264px;
+    height: 374px;
+
+    margin-bottom: 0px;
+    margin-right: 68px;
+  }
+  @include screen-size(desktop) {
+    width: 375px;
+    height: 478px;
+
+    margin-right: 16px;
+  }
+}
+
+.modal__table {
+  text-align: left;
+  align-self: start;
+
+  @include screen-size(mobile) {
+    width: 240px;
+  }
+  @include screen-size(tablet) {
+    width: 264px;
+  }
+  @include screen-size(desktop) {
+    width: 391px;
+  }
+}
+
+.modal__title {
+  font-size: 20px;
+  line-height: 1.15;
+  padding-bottom: 20px;
+
+  @include screen-size(desktop) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
+}
+
+.modal__item {
+  width: 69px;
+  color: $color-fields-names;
+}
+
+.modal__item-value {
+  line-height: 1.16;
+}
+
+.modall__span-vote {
+  width: 36px;
+  height: 16px;
+
+  padding: 1px 10px;
+
+  border-radius: 5px;
+  background-color: $color-rating;
+  color: $color-main-white;
+}
+
+.modal__item-value-orig-title {
+  line-height: 1.33;
+}
+
+.modal__item-genre {
+  padding-bottom: 20px;
+}
+
+.modal__item-value-genre {
+  padding-bottom: 20px;
+  line-height: 1.33;
+}
+
+.modal__item-about {
+  text-transform: uppercase;
+}
+
+.modal__item-value-about {
+  line-height: 1.67;
+  padding-bottom: 20px;
+
+  @include screen-size(mobile) {
+    width: 240px;
+  }
+
+  @include screen-size(tablet) {
+    width: 264px;
+  }
+
+  @include screen-size(desktop) {
+    width: 391px;
+  }
+}
+
+.modal__button {
+  border: 1px solid $color-main-text;
+  border-radius: 5px;
+
+  font-size: 12px;
+  line-height: 1.33;
+
+  text-transform: uppercase;
+  background-color: $color-main-white;
+
+  @include screen-size(mobile) {
+    width: 110px;
+    padding: 6px 7px;
+  }
+  @include screen-size(tablet) {
+    width: 126px;
+    padding: 10px 13px;
+  }
+  @include screen-size(desktop) {
+    width: 136px;
+  }
+}
+
+.modal__button:hover,
+.modal__button:focus {
+  border-radius: 5px;
+  border: 1px solid $color-rating;
+
+  background-color: $color-rating;
+  color: $color-main-white;
+  transition: background-color $animation;
+}
+
+.modal__button-watched {
+  margin-right: 20px;
+
+  @include screen-size(tablet) {
+    margin-right: 15px;
+    padding: 10px 13px;
+  }
+  @include screen-size(desktop) {
+    margin-left: 8px;
+    margin-right: 15px;
+  }
+}

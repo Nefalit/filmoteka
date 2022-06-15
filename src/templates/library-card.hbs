@@ -1,0 +1,26 @@
+{{#each this}}
+  <li id={{id}} class='gallery-library__card'>
+    <img
+      class='gallery-library__img'
+      {{#if poster_path}}
+      src='{{getPosterUrl poster_path}}'
+      {{else}}
+      src='https://papik.pro/uploads/posts/2021-12/thumbs/1639228118_1-papik-pro-p-kino-klipart-1.jpg'
+      {{/if}}
+      alt={{title}}
+    />
+    <div class='gallery-library__info-wrap'>
+      <p class='gallery-library__name'>{{title}}</p>
+      <div class='gallery-library__info'>
+        {{#if genre_ids}}
+        <span class='gallery-library__genre'>{{getShortGenres genre_ids}}
+        {{else}}
+        <span class='gallery-library__genre'>Жанр невідомий
+        {{/if}}
+            |
+            {{getYear release_date}}</span>
+        <span class='gallery-library__rating'>{{vote_average}}</span>
+      </div>
+    </div>
+  </li>
+{{/each}}

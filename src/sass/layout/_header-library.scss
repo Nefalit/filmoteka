@@ -1,0 +1,172 @@
+.header-lib {
+  padding: 40px 0 62px;
+  background-image: linear-gradient(
+      to top,
+      $color-gradient-headers,
+      $color-gradient-headers
+    ),
+    url('../images/library/mobile/lib-header-mobile.jpg');
+
+  @include screen-size(retina) {
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/library/mobile/lib-header-mobile@2x.jpg');
+  }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 70%;
+
+  @include screen-size(tablet) {
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/library/tablet/lib-header-tablet.jpg');
+    padding: 40px 0 60px;
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/library/tablet/lib-header-tablet@2x.jpg');
+    }
+  }
+
+  @include screen-size(desktop) {
+    background-image: linear-gradient(
+        to top,
+        $color-gradient-headers,
+        $color-gradient-headers
+      ),
+      url('../images/library/desktop/lib-header-desktop.jpg');
+
+    @include screen-size(retina) {
+      background-image: linear-gradient(
+          to top,
+          $color-gradient-headers,
+          $color-gradient-headers
+        ),
+        url('../images/library/desktop/lib-header-desktop@2x.jpg');
+    }
+  }
+}
+
+.navigation-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 62px;
+
+  @include screen-size(tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.header__link {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  stroke: $color-logo;
+  fill: transparent;
+}
+
+.header-home__title {
+  display: none;
+  color: $color-main-white;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  margin-left: 8px;
+
+  @include screen-size(tablet) {
+    display: inline-block;
+  }
+
+  @include screen-size(tablet) {
+    margin-left: 10px;
+  }
+}
+
+.nav {
+  margin-left: auto;
+}
+.nav-list {
+  display: flex;
+}
+
+.nav__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 39px;
+
+  @include screen-size(tablet-only) {
+    margin-right: 40px;
+  }
+}
+
+.nav__item.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: $color-accent;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__link {
+  text-transform: uppercase;
+  color: $color-main-white;
+}
+
+.lib-btns {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 130px;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: $color-main-white;
+}
+
+.btn--active {
+  border: 1px solid $color-accent;
+  background-color: $color-accent;
+}
+
+.btn--bright {
+  background-color: transparent;
+  border: 1px solid $color-main-white;
+}
+
+.btn__lib {
+  transition: background-color $animation;
+}
+
+.btn__lib:hover,
+.btn__lib:focus {
+  background-color: $color-accent;
+}
+
+.btn__lib:not(:last-child) {
+  margin-right: 15px;
+}
