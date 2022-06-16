@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars';
+import Notiflix from 'notiflix';
 import {
   getYear,
   getPosterUrl,
@@ -78,6 +79,9 @@ function libCardClickHandler(event) {
       watchedArr.splice(requiredInd, 1);
       localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
       firstIdxWatched = 0;
+      Notiflix.Notify.success('Фільм видалено з переглянутих', {
+        timeout: 1000,
+      });
     }
   }
 
@@ -96,6 +100,9 @@ function libCardClickHandler(event) {
       queueArr.splice(requiredInd, 1);
       localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
       firstIdxQueue = 0;
+      Notiflix.Notify.success('Фільм видалено з черги', {
+        timeout: 1000,
+      });
     }
   }
 
