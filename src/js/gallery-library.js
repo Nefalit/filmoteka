@@ -67,7 +67,6 @@ function libCardClickHandler(event) {
       const queueArr = load(QUEUE_PAGE_FILMS);
       const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
       queueArr.splice(requiredInd, 1);
-      console.log(currentFilm);
       localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
 
       save(WATCHED_PAGE_FILMS, currentFilm);
