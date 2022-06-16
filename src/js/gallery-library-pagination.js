@@ -23,6 +23,7 @@ watchedBtn.addEventListener('click', getDataWatched);
 let currentPageWatched = 1;
 export let firstIdxWatched = 0;
 let lastIdxWatched = 20;
+
 export function getDataWatched() {
   watchedBtn.classList.add('btn--active');
   watchedBtn.classList.remove('btn--bright');
@@ -73,6 +74,7 @@ queuedBtn.addEventListener('click', getDataQueue);
 let currentPageQueue = 1;
 export let firstIdxQueue = 0;
 let lastIdxQueue = 20;
+
 export function getDataQueue() {
   queuedBtn.classList.add('btn--active');
   queuedBtn.classList.remove('btn--bright');
