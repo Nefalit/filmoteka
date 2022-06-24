@@ -68,6 +68,7 @@ async function getStartPage() {
       });
 
       galleryEl.innerHTML = markupHomepage;
+      container.classList.remove('visually-hidden');
     })
     .catch(err => Notiflix.Notify.failure(`${err}`));
 }
