@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars';
+import Notiflix from 'notiflix';
 import {
   getYear,
   getPosterUrl,
@@ -53,25 +54,55 @@ function libCardClickHandler(event) {
   btnWatchedEl.addEventListener('click', saveToLibWatchedStorage);
   btnQueueEl.addEventListener('click', saveToLibQueueStorage);
 
+  if (selectedList === 'queue') {
+    btnQueueEl.textContent = 'Видалити з черги';
+  }
+
+  if (selectedList === 'watched') {
+    btnWatchedEl.textContent = 'Видалити з переглянутих';
+  }
+
   function saveToLibWatchedStorage() {
-    const queueArr = load(QUEUE_PAGE_FILMS);
+    if (selectedList === 'queue') {
+      const queueArr = load(QUEUE_PAGE_FILMS);
+      const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
+      queueArr.splice(requiredInd, 1);
+      localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
 
-    const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
-    queueArr.splice(requiredInd, 1);
-    localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
+      save(WATCHED_PAGE_FILMS, currentFilm);
+      firstIdxQueue = 0;
+    } else {
+      const watchedArr = load(WATCHED_PAGE_FILMS);
 
-    save(WATCHED_PAGE_FILMS, currentFilm);
-    firstIdxQueue = 0;
+      const requiredInd = watchedArr.findIndex(el => el.id === currentFilm.id);
+      watchedArr.splice(requiredInd, 1);
+      localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
+      firstIdxWatched = 0;
+      Notiflix.Notify.success('Фільм видалено з переглянутих', {
+        timeout: 1000,
+      });
+    }
   }
 
   function saveToLibQueueStorage() {
-    const watchedArr = load(WATCHED_PAGE_FILMS);
-    const requiredInd = watchedArr.findIndex(el => el.id === currentFilm.id);
-    watchedArr.splice(requiredInd, 1);
-    localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
+    if (selectedList === 'watched') {
+      const watchedArr = load(WATCHED_PAGE_FILMS);
+      const requiredInd = watchedArr.findIndex(el => el.id === currentFilm.id);
+      watchedArr.splice(requiredInd, 1);
+      localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
 
-    save(QUEUE_PAGE_FILMS, currentFilm);
-    firstIdxWatched = 0;
+      save(QUEUE_PAGE_FILMS, currentFilm);
+      firstIdxWatched = 0;
+    } else {
+      const queueArr = load(QUEUE_PAGE_FILMS);
+      const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
+      queueArr.splice(requiredInd, 1);
+      localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
+      firstIdxQueue = 0;
+      Notiflix.Notify.success('Фільм видалено з черги', {
+        timeout: 1000,
+      });
+    }
   }
 
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
