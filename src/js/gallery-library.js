@@ -83,6 +83,7 @@ function libCardClickHandler(event) {
         timeout: 1000,
       });
     }
+
   }
 
   function saveToLibQueueStorage() {
@@ -110,6 +111,7 @@ function libCardClickHandler(event) {
         timeout: 1000,
       });
     }
+
   }
 
   btnCloseModal.addEventListener('click', filmCardCloseWindow);
