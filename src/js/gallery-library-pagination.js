@@ -21,7 +21,7 @@ export function renderGallery(arr) {
 watchedBtn.addEventListener('click', getDataWatched);
 
 let currentPageWatched = 1;
-export let firstIdxWatched = 0;
+let firstIdxWatched = 0;
 let lastIdxWatched = 20;
 
 export function getDataWatched() {
@@ -72,7 +72,7 @@ export function getDataWatched() {
 queuedBtn.addEventListener('click', getDataQueue);
 
 let currentPageQueue = 1;
-export let firstIdxQueue = 0;
+let firstIdxQueue = 0;
 let lastIdxQueue = 20;
 
 export function getDataQueue() {
