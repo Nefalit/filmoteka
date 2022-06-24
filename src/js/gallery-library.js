@@ -74,9 +74,15 @@ function libCardClickHandler(event) {
     } else {
       const watchedArr = load(WATCHED_PAGE_FILMS);
 
-    save(WATCHED_PAGE_FILMS, currentFilm);
+    // save(WATCHED_PAGE_FILMS, currentFilm);
     // firstIdxQueue = 0;
       const requiredInd = watchedArr.findIndex(el => el.id === currentFilm.id);
+      if (requiredInd === -1) {
+        Notiflix.Notify.failure(`Цей фільм вже видалено`, {
+          timeout: 1000,
+        });
+        return
+      }
       watchedArr.splice(requiredInd, 1);
       localStorage.setItem(WATCHED_PAGE_FILMS, JSON.stringify(watchedArr));
       firstIdxWatched = 0;
@@ -99,6 +105,13 @@ function libCardClickHandler(event) {
     } else {
       const queueArr = load(QUEUE_PAGE_FILMS);
       const requiredInd = queueArr.findIndex(el => el.id === currentFilm.id);
+      console.log(requiredInd);
+      if (requiredInd === -1) {
+        Notiflix.Notify.failure(`Цей фільм вже видалено`, {
+          timeout: 1000,
+        });
+        return
+      }
       queueArr.splice(requiredInd, 1);
       localStorage.setItem(QUEUE_PAGE_FILMS, JSON.stringify(queueArr));
       firstIdxQueue = 0;
