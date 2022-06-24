@@ -22,7 +22,6 @@ const btnCloseModal = document.querySelector('.modal__button-close-modal');
 galleryListEl.addEventListener('click', filmCardClickHandler);
 
 export function filmCardClickHandler(ev) {
-  document.body.style.overflow = 'hidden';
   if (ev.target.parentNode.parentNode.className !== 'container__card') {
     return;
   }
@@ -39,6 +38,7 @@ export function filmCardClickHandler(ev) {
   const requedFilm = collectionFilmsFromLS[indexObdectFilm];
 
   modalInfoFilm.innerHTML = filmModal(requedFilm);
+  document.body.style.overflow = 'hidden';
 
   backdrop.classList.remove('visually-hidden');
   backdrop.addEventListener('click', backdropCloseModal);
